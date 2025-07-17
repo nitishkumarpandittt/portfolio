@@ -10,16 +10,18 @@ const Hero = () => {
   more customers, scale faster, and 
   outperform their competition.`;
   return (
-    <section id="home" className="flex flex-col justify-end min-h-screen">
-      <AnimatedHeaderSection
-        subTitle={"Software Development Engineer"}
-        title={"Nitish Pandit"}
-        text={text}
-        textColor={"text-black"}
-      />
+    <section id="home" className="relative flex flex-col justify-end min-h-screen">
+      <div className="relative z-10">
+        <AnimatedHeaderSection
+          subTitle={"Software Development Engineer"}
+          title={"Nitish Pandit"}
+          text={text}
+          textColor={"text-black"}
+        />
+      </div>
       <figure
-        className="absolute inset-0 -z-50"
-        style={{ width: "100vw", height: "100vh" }}
+        className="absolute inset-0 z-0"
+        style={{ width: "100vw", height: "100vh", pointerEvents: "none" }}
       >
         <Canvas
           shadows

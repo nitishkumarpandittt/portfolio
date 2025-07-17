@@ -22,7 +22,6 @@ const Contact = () => {
     });
   }, []);
   return (
-    <>
     <section
       id="contact"
       className="bg-black overflow-x-hidden min-h-fit w-full max-w-full"
@@ -70,15 +69,16 @@ const Contact = () => {
         </div>
       </div>
 
-      
-    </section>
+      {/* Bottom Marquee - positioned at the absolute bottom */}
+      <div className="mt-8 sm:mt-12 md:mt-16">
         <Marquee
           items={["Just Imagine, I Code", "Let's Connect", "Build Together"]}
           className="text-white bg-black border-t border-white/20"
           iconClassName="text-gold"
           icon="mdi:star-four-points"
         />
-      </>
+      </div>
+    </section>
   );
 };
 
