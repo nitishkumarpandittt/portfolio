@@ -162,8 +162,7 @@ export const workExperience = [
   {
     id: 1,
     position: "Game Developer",
-    company: "Freelance",
-    location: "remote",
+    company: "remote",
     type: "Full-time",
     startDate: "Jan 2025",
     endDate: "Present",
