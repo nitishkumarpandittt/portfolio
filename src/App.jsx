@@ -48,7 +48,6 @@ const App = () => {
         <About />
         <Works />
         <Experience />
-        <ContactSummary />
         <Contact />
       </div>
     </ReactLenis>
