@@ -6,32 +6,31 @@ import React, { useRef, useMemo, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import * as THREE from "three";
 
 export function Planet(props) {
+  console.log('🌍 Planet component rendering...', props);
+
   const shapeContainer = useRef(null);
   const shperesContainer = useRef(null);
   const ringContainer = useRef(null);
+
+  // Load GLTF model
   const { nodes, materials } = useGLTF("/models/Planet.glb");
 
-  // Performance optimization: Memoize materials with reduced quality for low-end devices
+  // Debug logging
+  useEffect(() => {
+    console.log('✅ Planet component mounted');
+    console.log('📦 Nodes:', nodes);
+    console.log('🎨 Materials:', materials);
+    console.log('🔧 Props:', props);
+  }, [nodes, materials, props]);
+
+  // Simple material optimization
   const optimizedMaterials = useMemo(() => {
-    const isLowEnd = navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
+    if (!materials["Material.002"] || !materials["Material.001"]) return null;
 
     const optimizedMaterial002 = materials["Material.002"].clone();
     const optimizedMaterial001 = materials["Material.001"].clone();
-
-    if (isLowEnd) {
-      // Reduce material complexity for low-end devices
-      optimizedMaterial002.roughness = Math.min(optimizedMaterial002.roughness + 0.2, 1);
-      optimizedMaterial002.metalness = Math.max(optimizedMaterial002.metalness - 0.1, 0);
-      optimizedMaterial001.roughness = Math.min(optimizedMaterial001.roughness + 0.2, 1);
-      optimizedMaterial001.metalness = Math.max(optimizedMaterial001.metalness - 0.1, 0);
-
-      // Disable expensive features
-      if (optimizedMaterial002.normalMap) optimizedMaterial002.normalMap = null;
-      if (optimizedMaterial001.normalMap) optimizedMaterial001.normalMap = null;
-    }
 
     return {
       material002: optimizedMaterial002,
@@ -39,23 +38,9 @@ export function Planet(props) {
     };
   }, [materials]);
 
-  // Performance optimization: Memoize geometries with reduced complexity for low-end devices
+  // Simple geometry optimization
   const optimizedGeometries = useMemo(() => {
-    const isLowEnd = navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
-
-    if (isLowEnd) {
-      // Reduce geometry complexity for low-end devices
-      const sphereGeometry = nodes.Sphere.geometry.clone();
-      const sphere2Geometry = nodes.Sphere2.geometry.clone();
-      const ringGeometry = nodes.Ring.geometry.clone();
-
-      // Simplify geometries if they have too many vertices
-      return {
-        sphere: sphereGeometry,
-        sphere2: sphere2Geometry,
-        ring: ringGeometry
-      };
-    }
+    if (!nodes.Sphere || !nodes.Sphere2 || !nodes.Ring) return null;
 
     return {
       sphere: nodes.Sphere.geometry,
@@ -95,85 +80,50 @@ export function Planet(props) {
     );
   }, []);
 
-  // Performance optimization: Detect low-end devices and disable shadows
-  const isLowEnd = useMemo(() => {
-    return navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
-  }, []);
-
-  // Enhanced memory management with performance event listening
-  useEffect(() => {
-    // Listen for performance optimization events
-    const handleMemoryPressure = (event) => {
-      if (event.detail.level === 'high') {
-        // Force cleanup of materials and geometries
-        Object.values(optimizedMaterials).forEach(material => {
-          if (material.dispose) material.dispose();
-        });
-        Object.values(optimizedGeometries).forEach(geometry => {
-          if (geometry.dispose) geometry.dispose();
-        });
-
-        // Force garbage collection if available
-        if (window.gc) {
-          window.gc();
-        }
-      }
-    };
-
-    const handleThreeJSQualityReduction = (event) => {
-      // This could trigger re-rendering with lower quality settings
-      // but we'll keep it subtle for now
-      console.log('Three.js quality reduction requested:', event.detail);
-    };
-
-    window.addEventListener('memory-pressure', handleMemoryPressure);
-    window.addEventListener('threejs-reduce-quality', handleThreeJSQualityReduction);
-
-    return () => {
-      window.removeEventListener('memory-pressure', handleMemoryPressure);
-      window.removeEventListener('threejs-reduce-quality', handleThreeJSQualityReduction);
-
-      // Standard cleanup on unmount
-      if (isLowEnd) {
-        Object.values(optimizedMaterials).forEach(material => {
-          if (material.dispose) material.dispose();
-        });
-        Object.values(optimizedGeometries).forEach(geometry => {
-          if (geometry.dispose) geometry.dispose();
-        });
-      }
-    };
-  }, [isLowEnd, optimizedMaterials, optimizedGeometries]);
-
-  // Enhanced error handling to prevent crashes
+  // Simple error handling
   if (!nodes || !materials) {
     console.warn('Planet: Missing nodes or materials');
-    return null;
+    // Always render a fallback sphere so something is visible
+    return (
+      <group ref={shapeContainer} {...props}>
+        <mesh>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial color="#4a90e2" roughness={0.3} metalness={0.7} />
+        </mesh>
+        <mesh position={[0.5, 0.8, -0.5]} scale={0.2}>
+          <sphereGeometry args={[1, 16, 12]} />
+          <meshStandardMaterial color="#6bb6ff" />
+        </mesh>
+      </group>
+    );
   }
 
-  if (!nodes.Sphere || !nodes.Sphere2 || !nodes.Ring) {
-    console.warn('Planet: Missing required geometry nodes');
-    return null;
-  }
-
-  if (!materials["Material.002"] || !materials["Material.001"]) {
-    console.warn('Planet: Missing required materials');
-    return null;
+  if (!optimizedMaterials || !optimizedGeometries) {
+    console.warn('Planet: Optimized materials/geometries not ready');
+    // Return a simple fallback sphere while loading
+    return (
+      <group ref={shapeContainer} {...props}>
+        <mesh>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial color="#4a90e2" roughness={0.3} metalness={0.7} />
+        </mesh>
+      </group>
+    );
   }
 
   return (
     <group ref={shapeContainer} {...props} dispose={null}>
       <group ref={shperesContainer}>
         <mesh
-          castShadow={!isLowEnd}
-          receiveShadow={!isLowEnd}
+          castShadow
+          receiveShadow
           geometry={optimizedGeometries.sphere}
           material={optimizedMaterials.material002}
           rotation={[0, 0, 0.741]}
         />
         <mesh
-          castShadow={!isLowEnd}
-          receiveShadow={!isLowEnd}
+          castShadow
+          receiveShadow
           geometry={optimizedGeometries.sphere2}
           material={optimizedMaterials.material001}
           position={[0.647, 1.03, -0.724]}
@@ -183,8 +133,8 @@ export function Planet(props) {
       </group>
       <mesh
         ref={ringContainer}
-        castShadow={!isLowEnd}
-        receiveShadow={!isLowEnd}
+        castShadow
+        receiveShadow
         geometry={optimizedGeometries.ring}
         material={optimizedMaterials.material001}
         rotation={[-0.124, 0.123, -0.778]}

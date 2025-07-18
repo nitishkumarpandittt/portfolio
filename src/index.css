@@ -37,21 +37,23 @@
 /* Amiamie Light Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-LightItalic.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-LightItalic.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-LightItalic.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
+  font-display: fallback;
 }
 
 /* Amiamie Black */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Black.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Black.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Black.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
+  font-display: fallback;
 }
 
 /* Amiamie Black Italic */

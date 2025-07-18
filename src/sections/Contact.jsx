@@ -71,13 +71,6 @@ const Contact = () => {
       </div>
 
     </section>
-        <Marquee
-          items={["Let's Connect", "Build Together", "Just Imagine, I Code"]}
-          className="text-white bg-black border-t border-white/20"
-          iconClassName="text-gold"
-          icon="mdi:star-four-points"
-        />
-
       </>
   );
 };

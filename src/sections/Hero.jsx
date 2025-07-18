@@ -11,20 +11,15 @@ const Hero = () => {
   more customers, scale faster, and
   outperform their competition.`;
 
-  // Simplified device detection
+  // Simple device capabilities
   const deviceCapabilities = useMemo(() => {
-    const hardwareCores = navigator.hardwareConcurrency || 4;
-    const deviceMemory = navigator.deviceMemory || 4;
-
-    const isLowEnd = hardwareCores <= 2 || deviceMemory <= 2;
-
     return {
-      isLowEnd,
-      pixelRatio: isLowEnd ? 1 : Math.min(window.devicePixelRatio, 2),
-      enableShadows: !isLowEnd,
-      environmentResolution: isLowEnd ? 128 : 256
+      pixelRatio: Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2),
+      enableShadows: !isMobile,
+      environmentResolution: isMobile ? 128 : 256,
+      floatSpeed: 0.5
     };
-  }, []);
+  }, [isMobile]);
   return (
     <section id="home" className="relative flex flex-col justify-end min-h-screen overflow-hidden">
       <div className="relative z-10 will-change-transform">
@@ -43,15 +38,25 @@ const Hero = () => {
           shadows={deviceCapabilities.enableShadows}
           dpr={deviceCapabilities.pixelRatio}
           camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
+          performance={{ min: 0.5 }}
+          frameloop="always"
+          gl={{
+            powerPreference: isMobile ? "low-power" : "high-performance",
+            antialias: deviceCapabilities.enableShadows && !isMobile,
+            alpha: true,
+            depth: true,
+            stencil: false,
+            preserveDrawingBuffer: false
+          }}
         >
           <Suspense fallback={
             <mesh>
-              <sphereGeometry args={[1, 32, 32]} />
+              <sphereGeometry args={[1, 16, 12]} />
               <meshBasicMaterial color="#666" />
             </mesh>
           }>
             <ambientLight intensity={0.5} />
-            <Float speed={deviceCapabilities.isLowEnd ? 0.3 : 0.5}>
+            <Float speed={deviceCapabilities.floatSpeed}>
               <Planet scale={isMobile ? 0.7 : 1} />
             </Float>
             <Environment resolution={deviceCapabilities.environmentResolution}>
@@ -68,7 +73,7 @@ const Hero = () => {
                 position={[0, 3, 1]}
                 scale={10}
               />
-              {!deviceCapabilities.isLowEnd && (
+              {deviceCapabilities.enableShadows && (
                 <>
                   <Lightformer
                     form={"circle"}
