@@ -51,9 +51,10 @@ const AnimatedHeaderSection = ({
           >
             {subTitle}
           </p>
-          <div className="px-4 sm:px-6 md:px-10">
+          <div className="px-4 sm:px-6 md:px-10 overflow-hidden">
             <h1
-              className={`uppercase banner-text-responsive overflow-visible whitespace-nowrap font-bold tracking-wide ${textColor}`}
+              className={`uppercase banner-text-responsive font-bold tracking-wide will-change-transform ${textColor}`}
+              style={{ wordBreak: 'keep-all', whiteSpace: 'nowrap' }}
             >
               {title}
             </h1>

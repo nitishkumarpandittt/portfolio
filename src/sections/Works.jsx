@@ -61,7 +61,7 @@ const Works = () => {
   };
 
   return (
-    <section id="work" className="flex flex-col min-h-screen">
+    <section id="work" className="flex flex-col w-full overflow-hidden">
       <AnimatedHeaderSection
         subTitle={"Logic meets Aesthetics, Seamlessly"}
         title={"Project"}
@@ -69,7 +69,7 @@ const Works = () => {
         textColor={"text-black"}
         withScrollTrigger={true}
       />
-      <div className="relative mb-2 flex flex-col font-light">
+      <div className="relative mb-2 flex flex-col font-light overflow-hidden w-full">
         {projects.map((project, index) => (
           <div
             key={project.id}
@@ -108,7 +108,7 @@ const Works = () => {
             </div>
 
             {/* Image preview - always visible */}
-            <div className="relative flex items-center justify-center px-4 sm:px-6 md:px-10 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px]">
+            <div className="relative flex items-center justify-center px-4 sm:px-6 md:px-10 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
               <img
                 src={project.bgImage}
                 alt={`${project.name}-bg-image`}

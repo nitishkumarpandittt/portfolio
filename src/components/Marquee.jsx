@@ -146,18 +146,18 @@ const Marquee = ({
   return (
     <div
       ref={containerRef}
-      className={`overflow-hidden w-full h-16 sm:h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
+      className={`marquee-container overflow-hidden w-full h-16 sm:h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
     >
-      <div className="flex items-center">
+      <div className="flex items-center will-change-transform">
         {items.map((text, index) => (
           <span
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
-            className={`flex items-center shrink-0 ${noPadding ? 'px-2 sm:px-3 md:px-4' : 'px-4 sm:px-6 md:px-8 lg:px-16'}`}
+            className={`flex items-center shrink-0 will-change-transform ${noPadding ? 'px-2 sm:px-3 md:px-4' : 'px-4 sm:px-6 md:px-8 lg:px-16'}`}
             style={{ marginRight: noPadding ? '2rem' : '4rem' }}
           >
             <span className={noPadding ? 'mr-2 sm:mr-3 md:mr-4' : 'mr-4 sm:mr-6 md:mr-8'}>{text}</span>
-            <Icon icon={icon} className={iconClassName} />
+            <Icon icon={icon} className={`${iconClassName} flex-shrink-0`} />
           </span>
         ))}
       </div>

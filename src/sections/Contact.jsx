@@ -24,7 +24,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-black overflow-x-hidden min-h-fit w-full max-w-full"
+      className="bg-black overflow-x-hidden w-full max-w-full"
     >
       <AnimatedHeaderSection
         subTitle={"You Dream It, I Code it"}
@@ -67,6 +67,16 @@ const Contact = () => {
               </div>
             </div>
         </div>
+      </div>
+
+      {/* Bottom Marquee - positioned at the bottom */}
+      <div className="mt-8 sm:mt-12 md:mt-16">
+        <Marquee
+          items={["Just Imagine, I Code", "Let's Connect", "Build Together"]}
+          className="text-white bg-black border-t border-white/20"
+          iconClassName="text-gold"
+          icon="mdi:star-four-points"
+        />
       </div>
     </section>
   );

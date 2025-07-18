@@ -61,7 +61,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <section id="experience" className="min-h-screen bg-black rounded-t-4xl">
+    <section id="experience" className="bg-black rounded-t-4xl w-full overflow-hidden">
       <AnimatedHeaderSection
         subTitle={"Journey through Innovation"}
         title={"Experience"}

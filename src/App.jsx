@@ -22,7 +22,20 @@ const App = () => {
   }, [progress]);
 
   return (
-    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true, touchMultiplier: 2, wheelMultiplier: 1 }} className="relative w-full min-h-screen overflow-x-hidden">
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.08,
+        duration: 1.2,
+        smoothWheel: true,
+        touchMultiplier: 2,
+        wheelMultiplier: 1,
+        infinite: false,
+        orientation: 'vertical',
+        gestureOrientation: 'vertical'
+      }}
+      className="relative w-full min-h-screen overflow-x-hidden"
+    >
       {!isReady && (
         <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light">
           <p className="mb-4 text-xl tracking-widest animate-pulse">

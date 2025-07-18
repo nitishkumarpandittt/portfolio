@@ -43,7 +43,7 @@ const ContactSummary = () => {
   return (
     <section
       ref={containerRef}
-      className="flex flex-col items-center justify-between min-h-screen gap-8 sm:gap-12 "
+      className="flex flex-col items-center justify-center w-full overflow-hidden py-16 sm:py-20 md:py-24 gap-8 sm:gap-12"
     >
       <Marquee items={items} />
       <div className="overflow-hidden font-light text-center contact-text-responsive px-4 sm:px-0">

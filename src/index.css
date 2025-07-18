@@ -148,7 +148,7 @@ body::-webkit-scrollbar {
 }
 
 @utility banner-text-responsive {
-  @apply text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] tracking-tight font-medium;
+  @apply text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] xl:text-[88px] leading-[0.9] tracking-tight font-medium;
 }
 
 @utility value-text-responsive {
@@ -176,6 +176,49 @@ section {
   max-width: 100vw;
 }
 
+/* Fix all sections scrollbar issues */
+#work, #contact, #experience {
+  overflow: hidden;
+  height: auto;
+  min-height: auto;
+}
+
+/* Ensure project items don't cause overflow */
+#project {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Contact section specific fixes */
+#contact {
+  padding-bottom: 0;
+}
+
+/* Experience section specific fixes */
+#experience {
+  padding-bottom: 2rem;
+}
+
+/* Ensure marquee components work properly */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Performance optimizations */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Smooth animations */
+.will-change-transform {
+  will-change: transform;
+}
+
 /* Mobile-first responsive design */
 @media (max-width: 640px) {
   body {
@@ -191,11 +234,16 @@ section {
     min-height: 100dvh; /* Dynamic viewport height for mobile */
   }
 
-  /* Contact section mobile optimizations */
-  #contact {
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding-bottom: env(safe-area-inset-bottom);
+  /* Remove min-height constraints on mobile for better performance */
+  #contact, #experience, #work {
+    min-height: auto;
+    height: auto;
+  }
+
+  /* Optimize marquee for mobile */
+  .marquee-container {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
 
