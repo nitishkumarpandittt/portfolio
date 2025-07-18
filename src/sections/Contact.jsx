@@ -24,7 +24,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-black overflow-x-hidden w-full max-w-full"
+      className="bg-black overflow-hidden w-full"
     >
       <AnimatedHeaderSection
         subTitle={"You Dream It, I Code it"}

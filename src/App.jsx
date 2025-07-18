@@ -24,17 +24,12 @@ const App = () => {
   return (
     <ReactLenis
       root
-      options={{
-        lerp: 0.08,
-        duration: 1.2,
-        smoothWheel: true,
-        touchMultiplier: 2,
-        wheelMultiplier: 1,
-        infinite: false,
-        orientation: 'vertical',
-        gestureOrientation: 'vertical'
-      }}
+      options={{ lerp: 0.08, duration: 1.2, smoothWheel: true, touchMultiplier: 2, wheelMultiplier: 1 }}
       className="relative w-full min-h-screen overflow-x-hidden"
+      onCreated={(lenis) => {
+        // Make Lenis available globally for immediate navigation
+        window.lenis = lenis;
+      }}
     >
       {!isReady && (
         <div className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700 font-light">

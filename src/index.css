@@ -148,7 +148,7 @@ body::-webkit-scrollbar {
 }
 
 @utility banner-text-responsive {
-  @apply text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] xl:text-[88px] leading-[0.9] tracking-tight font-medium;
+  @apply text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] xl:text-[96px] leading-[0.9] tracking-tight font-medium;
 }
 
 @utility value-text-responsive {
@@ -161,6 +161,40 @@ body::-webkit-scrollbar {
 
 @utility contact-text-responsive {
   @apply text-[20px] sm:text-[24px] md:text-[32px] lg:text-[40px] xl:text-[48px];
+}
+
+/* Performance optimizations for smooth animations */
+.marquee-container {
+  contain: layout style paint;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth scrolling optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal overflow globally */
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Optimize animations for mobile */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* GPU acceleration for better performance */
+.will-change-transform {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* Prevent horizontal overflow globally */
@@ -176,8 +210,21 @@ section {
   max-width: 100vw;
 }
 
-/* Fix all sections scrollbar issues */
-#work, #contact, #experience {
+/* Additional responsive utilities */
+@utility service-text-responsive {
+  @apply text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[22px];
+}
+
+@utility experience-text-responsive {
+  @apply text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px];
+}
+
+@utility project-text-responsive {
+  @apply text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px];
+}
+
+/* Fix project section scrollbar issues */
+#work {
   overflow: hidden;
   height: auto;
   min-height: auto;
@@ -188,35 +235,6 @@ section {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-}
-
-/* Contact section specific fixes */
-#contact {
-  padding-bottom: 0;
-}
-
-/* Experience section specific fixes */
-#experience {
-  padding-bottom: 2rem;
-}
-
-/* Ensure marquee components work properly */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-}
-
-/* Performance optimizations */
-* {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
-}
-
-/* Smooth animations */
-.will-change-transform {
-  will-change: transform;
 }
 
 /* Mobile-first responsive design */
@@ -234,16 +252,11 @@ section {
     min-height: 100dvh; /* Dynamic viewport height for mobile */
   }
 
-  /* Remove min-height constraints on mobile for better performance */
-  #contact, #experience, #work {
-    min-height: auto;
-    height: auto;
-  }
-
-  /* Optimize marquee for mobile */
-  .marquee-container {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+  /* Contact section mobile optimizations */
+  #contact {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 

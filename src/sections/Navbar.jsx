@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Link } from "react-scroll";
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -72,17 +71,94 @@ const Navbar = () => {
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    let scrollDirection = 'up';
+    let hideTimeout = null;
+    let ticking = false;
 
-      setShowBurger(currentScrollY <= lastScrollY || currentScrollY < 10);
+    const updateNavbar = () => {
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+
+      // Only react to significant scroll changes (reduces jitter)
+      if (scrollDifference < 3) {
+        ticking = false;
+        return;
+      }
+
+      // Always show at top
+      if (currentScrollY <= 50) {
+        setShowBurger(true);
+        scrollDirection = 'up';
+        if (hideTimeout) {
+          clearTimeout(hideTimeout);
+          hideTimeout = null;
+        }
+      } else {
+        const newDirection = currentScrollY < lastScrollY ? 'up' : 'down';
+
+        if (newDirection === 'up') {
+          // Show immediately when scrolling up
+          setShowBurger(true);
+          scrollDirection = 'up';
+
+          // Clear any existing hide timeout
+          if (hideTimeout) {
+            clearTimeout(hideTimeout);
+            hideTimeout = null;
+          }
+        } else if (newDirection === 'down' && scrollDirection === 'up') {
+          // Only hide after scrolling down for a bit (prevents flickering)
+          scrollDirection = 'down';
+
+          // Delay hiding to prevent quick flicker
+          if (hideTimeout) clearTimeout(hideTimeout);
+          hideTimeout = setTimeout(() => {
+            setShowBurger(false);
+            hideTimeout = null;
+          }, 300); // 300ms delay before hiding
+        }
+      }
 
       lastScrollY = currentScrollY;
+      ticking = false;
     };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
+
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    };
+
+    // Multiple event listeners for immediate response
+    const events = ['scroll', 'wheel', 'touchmove'];
+    const targets = [window, document, document.documentElement];
+
+    targets.forEach(target => {
+      events.forEach(event => {
+        target.addEventListener(event, handleScroll, { passive: true });
+      });
     });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Reduced polling frequency since we have better logic now
+    const pollInterval = setInterval(() => {
+      if (!ticking) {
+        handleScroll();
+      }
+    }, 50); // Reduced to 20fps for better performance
+
+    // Initial check
+    updateNavbar();
+
+    return () => {
+      clearInterval(pollInterval);
+      if (hideTimeout) clearTimeout(hideTimeout);
+      targets.forEach(target => {
+        events.forEach(event => {
+          target.removeEventListener(event, handleScroll);
+        });
+      });
+    };
   }, []);
 
   const toggleMenu = () => {
@@ -103,6 +179,27 @@ const Navbar = () => {
       setIsOpen(false);
     }
   };
+
+  // Immediate scroll function that works with Lenis
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Try Lenis first for smooth scrolling
+      if (window.lenis) {
+        window.lenis.scrollTo(element, {
+          duration: 0.8, // Fast but smooth
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+      } else {
+        // Fallback to native smooth scroll
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+    closeMenu();
+  };
   return (
     <>
       <nav
@@ -114,16 +211,12 @@ const Navbar = () => {
           {["home", "services", "about", "project", "experience", "contact"].map(
             (section, index) => (
               <div key={index} ref={(el) => (linksRef.current[index] = el)}>
-                <Link
-                  className="transition-all duration-300 cursor-pointer hover:text-white block py-0.5 tracking-wide"
-                  to={`${section}`}
-                  smooth
-                  offset={0}
-                  duration={2000}
-                  onClick={closeMenu}
+                <button
+                  className="transition-all duration-300 cursor-pointer hover:text-white block py-0.5 tracking-wide text-left w-full"
+                  onClick={() => scrollToSection(section)}
                 >
-                  {section}
-                </Link>
+                  {section.toUpperCase()}
+                </button>
               </div>
             )
           )}
