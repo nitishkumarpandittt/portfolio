@@ -100,11 +100,41 @@ export function Planet(props) {
     return navigator.hardwareConcurrency <= 4 || navigator.deviceMemory <= 4;
   }, []);
 
-  // Memory management: Cleanup on unmount for low-end devices
+  // Enhanced memory management with performance event listening
   useEffect(() => {
+    // Listen for performance optimization events
+    const handleMemoryPressure = (event) => {
+      if (event.detail.level === 'high') {
+        // Force cleanup of materials and geometries
+        Object.values(optimizedMaterials).forEach(material => {
+          if (material.dispose) material.dispose();
+        });
+        Object.values(optimizedGeometries).forEach(geometry => {
+          if (geometry.dispose) geometry.dispose();
+        });
+
+        // Force garbage collection if available
+        if (window.gc) {
+          window.gc();
+        }
+      }
+    };
+
+    const handleThreeJSQualityReduction = (event) => {
+      // This could trigger re-rendering with lower quality settings
+      // but we'll keep it subtle for now
+      console.log('Three.js quality reduction requested:', event.detail);
+    };
+
+    window.addEventListener('memory-pressure', handleMemoryPressure);
+    window.addEventListener('threejs-reduce-quality', handleThreeJSQualityReduction);
+
     return () => {
+      window.removeEventListener('memory-pressure', handleMemoryPressure);
+      window.removeEventListener('threejs-reduce-quality', handleThreeJSQualityReduction);
+
+      // Standard cleanup on unmount
       if (isLowEnd) {
-        // Force garbage collection of materials and geometries
         Object.values(optimizedMaterials).forEach(material => {
           if (material.dispose) material.dispose();
         });

@@ -10,10 +10,14 @@ import Experience from "./sections/Experience";
 import ContactSummary from "./sections/ContactSummary";
 import Contact from "./sections/Contact";
 import { useProgress } from "@react-three/drei";
+import { usePerformanceOptimization } from "./hooks/usePerformanceOptimization";
 
 const App = () => {
   const { progress } = useProgress();
   const [isReady, setIsReady] = useState(false);
+
+  // Initialize performance optimizations (runs silently in background)
+  usePerformanceOptimization();
 
   // Device-optimized Lenis settings
   const lenisOptions = useMemo(() => {
