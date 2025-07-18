@@ -115,6 +115,22 @@ export function Planet(props) {
     };
   }, [isLowEnd, optimizedMaterials, optimizedGeometries]);
 
+  // Enhanced error handling to prevent crashes
+  if (!nodes || !materials) {
+    console.warn('Planet: Missing nodes or materials');
+    return null;
+  }
+
+  if (!nodes.Sphere || !nodes.Sphere2 || !nodes.Ring) {
+    console.warn('Planet: Missing required geometry nodes');
+    return null;
+  }
+
+  if (!materials["Material.002"] || !materials["Material.001"]) {
+    console.warn('Planet: Missing required materials');
+    return null;
+  }
+
   return (
     <group ref={shapeContainer} {...props} dispose={null}>
       <group ref={shperesContainer}>

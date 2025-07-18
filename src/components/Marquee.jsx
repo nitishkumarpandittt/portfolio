@@ -119,34 +119,52 @@ const Marquee = ({
   }
 
   useEffect(() => {
-    const tl = horizontalLoop(itemsRef.current, {
-      repeat: -1,
-      paddingRight: 150,
-      reversed: reverse,
+    // Smooth fade-in animation first
+    gsap.to(containerRef.current, {
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 0.2
     });
 
-    Observer.create({
-      onChangeY(self) {
-        let factor = 2.5;
-        if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
-          factor *= -1;
-        }
-        gsap
-          .timeline({
-            defaults: {
-              ease: "none",
-            },
-          })
-          .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
-          .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
-      },
-    });
-    return () => tl.kill();
+    // Add a small delay to ensure smooth initialization
+    const initTimer = setTimeout(() => {
+      const tl = horizontalLoop(itemsRef.current, {
+        repeat: -1,
+        paddingRight: 150,
+        reversed: reverse,
+      });
+
+      Observer.create({
+        onChangeY(self) {
+          let factor = 2.5;
+          if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
+            factor *= -1;
+          }
+          gsap
+            .timeline({
+              defaults: {
+                ease: "none",
+              },
+            })
+            .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
+            .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
+        },
+      });
+
+      return () => {
+        tl.kill();
+        clearTimeout(initTimer);
+      };
+    }, 300);
+
+    return () => clearTimeout(initTimer);
   }, [items, reverse]);
   return (
     <div
       ref={containerRef}
       className={`marquee-container overflow-hidden w-full h-16 sm:h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
+      style={{ opacity: 0 }}
     >
       <div className="flex items-center will-change-transform">
         {items.map((text, index) => (

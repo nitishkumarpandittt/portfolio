@@ -13,55 +13,112 @@ const Works = () => {
     results and impact.`;
 
   useGSAP(() => {
-    gsap.from("#project", {
-      y: 100,
-      opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: "#project",
-      },
-    });
+    // Device-optimized animations
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory || 4;
+    const isLowEnd = cores <= 4 || memory <= 4;
+    const isVeryLowEnd = cores <= 2 || memory <= 2;
+
+    if (isVeryLowEnd) {
+      // Simplified animation for very low-end devices
+      gsap.from("#project", {
+        opacity: 0,
+        delay: 0.2,
+        duration: 0.5,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: "#project",
+          refreshPriority: -1,
+        },
+      });
+    } else {
+      // Full animation for capable devices
+      gsap.from("#project", {
+        y: isLowEnd ? 50 : 100,
+        opacity: 0,
+        delay: isLowEnd ? 0.3 : 0.5,
+        duration: isLowEnd ? 0.7 : 1,
+        stagger: isLowEnd ? 0.2 : 0.3,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: "#project",
+          refreshPriority: isLowEnd ? -1 : 0,
+        },
+      });
+    }
   }, []);
 
   const handleMouseEnter = (index) => {
     if (window.innerWidth < 768) return;
 
+    // Check device capabilities
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory || 4;
+    const isLowEnd = cores <= 4 || memory <= 4;
+    const isVeryLowEnd = cores <= 2 || memory <= 2;
+
     const el = overlayRefs.current[index];
     if (!el) return;
 
     gsap.killTweensOf(el);
-    gsap.fromTo(
-      el,
-      {
-        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      },
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration: 0.15,
+
+    if (isVeryLowEnd) {
+      // Simple opacity animation for very low-end devices
+      gsap.to(el, {
+        opacity: 1,
+        duration: 0.2,
         ease: "power2.out",
-      }
-    );
+      });
+    } else {
+      // Full clip-path animation for capable devices
+      gsap.fromTo(
+        el,
+        {
+          clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+        },
+        {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          duration: isLowEnd ? 0.2 : 0.15,
+          ease: "power2.out",
+        }
+      );
+    }
   };
 
   const handleMouseLeave = (index) => {
     if (window.innerWidth < 768) return;
 
+    // Check device capabilities
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory || 4;
+    const isLowEnd = cores <= 4 || memory <= 4;
+    const isVeryLowEnd = cores <= 2 || memory <= 2;
+
     const el = overlayRefs.current[index];
     if (!el) return;
 
     gsap.killTweensOf(el);
-    gsap.to(el, {
-      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      duration: 0.2,
-      ease: "power2.in",
-    });
+
+    if (isVeryLowEnd) {
+      // Simple opacity animation for very low-end devices
+      gsap.to(el, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.out",
+      });
+    } else {
+      // Full clip-path animation for capable devices
+      gsap.to(el, {
+        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+        duration: 0.2,
+        ease: "power2.in",
+      });
+    }
   };
 
   return (
-    <section id="work" className="flex flex-col w-full overflow-hidden">
+    <section id="project" className="flex flex-col w-full min-h-screen">
       <AnimatedHeaderSection
         subTitle={"Logic meets Aesthetics, Seamlessly"}
         title={"Project"}
@@ -69,12 +126,12 @@ const Works = () => {
         textColor={"text-black"}
         withScrollTrigger={true}
       />
-      <div className="relative mb-2 flex flex-col font-light overflow-hidden w-full">
+      <div className="relative mb-2 flex flex-col font-light w-full max-w-full">
         {projects.map((project, index) => (
           <div
             key={project.id}
             id="project"
-            className="relative flex flex-col gap-2 py-5 cursor-pointer group md:gap-2"
+            className="relative flex flex-col gap-2 py-5 cursor-pointer group md:gap-2 w-full"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
@@ -108,17 +165,19 @@ const Works = () => {
             </div>
 
             {/* Image preview - always visible */}
-            <div className="relative flex items-center justify-center px-4 sm:px-6 md:px-10 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
-              <img
-                src={project.bgImage}
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-              />
-              <img
-                src={project.image}
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl max-w-[80%] max-h-[80%] object-contain"
-              />
+            <div className="relative flex items-center justify-center px-4 sm:px-6 md:px-10 h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] w-full">
+              <div className="relative w-full h-full overflow-hidden rounded-md">
+                <img
+                  src={project.bgImage}
+                  alt={`${project.name}-bg-image`}
+                  className="object-cover w-full h-full brightness-50"
+                />
+                <img
+                  src={project.image}
+                  alt={`${project.name}-image`}
+                  className="absolute inset-0 m-auto px-14 rounded-xl max-w-[80%] max-h-[80%] object-contain"
+                />
+              </div>
             </div>
           </div>
         ))}

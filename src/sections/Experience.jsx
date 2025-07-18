@@ -17,47 +17,86 @@ const Experience = () => {
     shaped my expertise.`;
 
   useGSAP(() => {
-    // Animate timeline items
-    gsap.from(".timeline-item", {
-      x: -100,
-      opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.2,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: ".timeline-container",
-        start: "top 80%",
-      },
-    });
+    // Device-optimized animations
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory || 4;
+    const isLowEnd = cores <= 4 || memory <= 4;
+    const isVeryLowEnd = cores <= 2 || memory <= 2;
 
-    // Animate timeline line
-    gsap.fromTo(".timeline-line", {
-      scaleY: 0,
-      transformOrigin: "top",
-    }, {
-      scaleY: 1,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".timeline-container",
-        start: "top 80%",
-      },
-    });
+    if (isVeryLowEnd) {
+      // Simplified animations for very low-end devices
+      gsap.from(".timeline-item", {
+        opacity: 0,
+        delay: 0.2,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top 80%",
+          refreshPriority: -1,
+        },
+      });
 
-    // Animate experience cards
-    gsap.from(".experience-card", {
-      y: 100,
-      opacity: 0,
-      delay: 0.8,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: ".timeline-container",
-        start: "top 80%",
-      },
-    });
+      gsap.from(".experience-card", {
+        y: 30,
+        opacity: 0,
+        delay: 0.4,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top 80%",
+          refreshPriority: -1,
+        },
+      });
+    } else {
+      // Full animations for capable devices
+      gsap.from(".timeline-item", {
+        x: isLowEnd ? -50 : -100,
+        opacity: 0,
+        delay: isLowEnd ? 0.3 : 0.5,
+        duration: isLowEnd ? 0.7 : 1,
+        stagger: isLowEnd ? 0.15 : 0.2,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top 80%",
+          refreshPriority: isLowEnd ? -1 : 0,
+        },
+      });
+
+      // Animate timeline line
+      gsap.fromTo(".timeline-line", {
+        scaleY: 0,
+        transformOrigin: "top",
+      }, {
+        scaleY: 1,
+        duration: isLowEnd ? 1.2 : 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top 80%",
+          refreshPriority: isLowEnd ? -1 : 0,
+        },
+      });
+
+      // Animate experience cards
+      gsap.from(".experience-card", {
+        y: isLowEnd ? 50 : 100,
+        opacity: 0,
+        delay: isLowEnd ? 0.5 : 0.8,
+        duration: isLowEnd ? 0.7 : 1,
+        stagger: isLowEnd ? 0.2 : 0.3,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: ".timeline-container",
+          start: "top 80%",
+          refreshPriority: isLowEnd ? -1 : 0,
+        },
+      });
+    }
   }, []);
 
   return (

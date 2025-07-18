@@ -13,37 +13,59 @@ const Services = () => {
   const serviceRefs = useRef([]);
 
   useGSAP(() => {
+    // Device-optimized animations
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory || 4;
+    const isLowEnd = cores <= 4 || memory <= 4;
+    const isVeryLowEnd = cores <= 2 || memory <= 2;
+
     // Amazing scroll-up animation for each service card
     serviceRefs.current.forEach((el, index) => {
       if (!el) return;
 
-      // Create a powerful timeline for each card
+      // Create a powerful timeline for each card with performance optimization
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
           end: "bottom 20%",
           toggleActions: "play none none reverse",
+          // Reduce scroll trigger frequency for low-end devices
+          refreshPriority: isLowEnd ? -1 : 0,
         }
       });
 
-      // Initial state - card completely hidden and transformed
-      gsap.set(el, {
-        y: 100,
-        opacity: 0,
-        scale: 0.8,
-        rotationX: 15,
-      });
+      if (isVeryLowEnd) {
+        // Simplified animation for very low-end devices
+        gsap.set(el, {
+          y: 50,
+          opacity: 0,
+        });
 
-      // Main card animation - fast dramatic entrance
-      tl.to(el, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        rotationX: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      });
+        tl.to(el, {
+          y: 0,
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      } else {
+        // Full animation for capable devices
+        gsap.set(el, {
+          y: 100,
+          opacity: 0,
+          scale: isLowEnd ? 0.9 : 0.8,
+          rotationX: isLowEnd ? 5 : 15,
+        });
+
+        tl.to(el, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotationX: 0,
+          duration: isLowEnd ? 0.4 : 0.6,
+          ease: "power3.out",
+        });
+      }
 
       // Service number animation - faster
       const serviceNumber = el.querySelector('.service-number');

@@ -7,8 +7,8 @@
 /* Amiamie Regular */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Regular.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Regular.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Regular.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -17,8 +17,8 @@
 /* Amiamie Regular Italic */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Italic.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Italic.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Italic.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -27,8 +27,8 @@
 /* Amiamie Light */
 @font-face {
   font-family: "Amiamie";
-  src: url("/fonts/otf/Amiamie-Light.otf") format("opentype"),
-    url("/fonts/ttf/Amiamie-Light.ttf") format("truetype");
+  src: url("/fonts/amiamie/otf/Amiamie-Light.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -195,6 +195,48 @@ body, html {
   will-change: transform;
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+/* Low-end device optimizations */
+@media (max-width: 768px) and (max-device-memory: 4GB) {
+  /* Reduce animations for low-end mobile devices */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.3s !important;
+  }
+
+  /* Disable expensive CSS features */
+  .will-change-transform {
+    will-change: auto;
+    backface-visibility: visible;
+    perspective: none;
+  }
+
+  /* Simplify shadows and effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+/* Very low-end device optimizations */
+@media (max-width: 480px) and (max-device-memory: 2GB) {
+  /* Disable all animations for very low-end devices */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Force hardware acceleration off for very low-end devices */
+  * {
+    transform: none !important;
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    perspective: none !important;
+  }
 }
 
 /* Prevent horizontal overflow globally */

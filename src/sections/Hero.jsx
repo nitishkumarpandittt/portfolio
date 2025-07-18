@@ -44,7 +44,12 @@ const Hero = () => {
           dpr={deviceCapabilities.pixelRatio}
           camera={{ position: [0, 0, -10], fov: 17.5, near: 1, far: 20 }}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={
+            <mesh>
+              <sphereGeometry args={[1, 32, 32]} />
+              <meshBasicMaterial color="#666" />
+            </mesh>
+          }>
             <ambientLight intensity={0.5} />
             <Float speed={deviceCapabilities.isLowEnd ? 0.3 : 0.5}>
               <Planet scale={isMobile ? 0.7 : 1} />
