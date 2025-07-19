@@ -9,7 +9,6 @@ const Marquee = ({
   icon = "mdi:star-four-points",
   iconClassName = "",
   reverse = false,
-  noPadding = false,
 }) => {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
@@ -119,63 +118,43 @@ const Marquee = ({
   }
 
   useEffect(() => {
-    // Smooth fade-in animation first
-    gsap.to(containerRef.current, {
-      opacity: 1,
-      duration: 0.8,
-      ease: "power2.out",
-      delay: 0.2
+    const tl = horizontalLoop(itemsRef.current, {
+      repeat: -1,
+      paddingRight: 30,
+      reversed: reverse,
     });
 
-    // Add a small delay to ensure smooth initialization
-    const initTimer = setTimeout(() => {
-      const tl = horizontalLoop(itemsRef.current, {
-        repeat: -1,
-        paddingRight: 150,
-        reversed: reverse,
-      });
-
-      Observer.create({
-        onChangeY(self) {
-          let factor = 2.5;
-          if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
-            factor *= -1;
-          }
-          gsap
-            .timeline({
-              defaults: {
-                ease: "none",
-              },
-            })
-            .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
-            .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
-        },
-      });
-
-      return () => {
-        tl.kill();
-        clearTimeout(initTimer);
-      };
-    }, 300);
-
-    return () => clearTimeout(initTimer);
+    Observer.create({
+      onChangeY(self) {
+        let factor = 2.5;
+        if ((!reverse && self.deltaY < 0) || (reverse && self.deltaY > 0)) {
+          factor *= -1;
+        }
+        gsap
+          .timeline({
+            defaults: {
+              ease: "none",
+            },
+          })
+          .to(tl, { timeScale: factor * 2.5, duration: 0.2, overwrite: true })
+          .to(tl, { timeScale: factor / 2.5, duration: 1 }, "+=0.3");
+      },
+    });
+    return () => tl.kill();
   }, [items, reverse]);
   return (
     <div
       ref={containerRef}
-      className={`marquee-container overflow-hidden w-full h-16 sm:h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
-      style={{ opacity: 0 }}
+      className={`overflow-hidden w-full h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
     >
-      <div className="flex items-center will-change-transform">
+      <div className="flex">
         {items.map((text, index) => (
           <span
             key={index}
             ref={(el) => (itemsRef.current[index] = el)}
-            className={`flex items-center shrink-0 will-change-transform ${noPadding ? 'px-2 sm:px-3 md:px-4' : 'px-4 sm:px-6 md:px-8 lg:px-16'}`}
-            style={{ marginRight: noPadding ? '2rem' : '4rem' }}
+            className="flex items-center px-16 gap-x-32"
           >
-            <span className={noPadding ? 'mr-2 sm:mr-3 md:mr-4' : 'mr-4 sm:mr-6 md:mr-8'}>{text}</span>
-            <Icon icon={icon} className={`${iconClassName} flex-shrink-0`} />
+            {text} <Icon icon={icon} className={iconClassName} />
           </span>
         ))}
       </div>

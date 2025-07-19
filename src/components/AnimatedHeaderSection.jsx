@@ -1,72 +1,41 @@
 import React from "react";
-import { useRef } from "react";
 import { AnimatedTextLines } from "../components/AnimatedTextLines";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+
 const AnimatedHeaderSection = ({
   subTitle,
   title,
   text,
   textColor,
-  withScrollTrigger = false,
+  devicePerformance = 'medium',
 }) => {
-  const contextRef = useRef(null);
-  const headerRef = useRef(null);
-  // Keep title as single line for better mobile display
-  const shouldSplitTitle = false;
-  const titleParts = [title];
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: withScrollTrigger
-        ? {
-            trigger: contextRef.current,
-          }
-        : undefined,
-    });
-    tl.from(contextRef.current, {
-      y: "50vh",
-      duration: 1,
-      ease: "circ.out",
-    });
-    tl.from(
-      headerRef.current,
-      {
-        opacity: 0,
-        y: "200",
-        duration: 1,
-        ease: "circ.out",
-      },
-      "<+0.2"
-    );
-  }, []);
+  const shouldSplitTitle = title.includes(" ");
+  const titleParts = shouldSplitTitle ? title.split(" ") : [title];
+
   return (
-    <div ref={contextRef} className="overflow-visible">
-      <div className="overflow-visible">
-        <div
-          ref={headerRef}
-          className="flex flex-col justify-center gap-6 pt-8 sm:gap-8 sm:pt-12 md:gap-12 md:pt-16"
-        >
+    <div>
+      <div style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
+        <div className="flex flex-col justify-center gap-[clamp(1rem,3vw,2.5rem)] pt-[clamp(1.5rem,4vw,3rem)]">
           <p
-            className={`text-xs sm:text-sm font-light tracking-[0.2rem] sm:tracking-[0.3rem] md:tracking-[0.5rem] uppercase px-4 sm:px-6 md:px-10 ${textColor}`}
+            className={`text-[clamp(8px,1.5vw,12px)] font-light tracking-[clamp(0.1rem,0.6vw,0.3rem)] uppercase px-[clamp(1rem,4vw,2.5rem)] ${textColor}`}
           >
             {subTitle}
           </p>
-          <div className="px-4 sm:px-6 md:px-10 overflow-hidden">
+          <div className="px-[clamp(1rem,4vw,2.5rem)]">
             <h1
-              className={`uppercase banner-text-responsive font-bold tracking-wide will-change-transform ${textColor}`}
-              style={{ wordBreak: 'keep-all', whiteSpace: 'nowrap' }}
+              className={`uppercase text-[clamp(32px,8vw,80px)] leading-[0.85] tracking-tight ${textColor}`}
             >
-              {title}
+              {titleParts.join(" ")}
             </h1>
           </div>
         </div>
       </div>
-      <div className={`px-4 sm:px-6 md:px-10 ${textColor}`}>
-        <div className="w-full border-t-2 my-2" />
-        <div className="py-6 sm:py-8 md:py-12 lg:py-16 text-end">
+      <div className={`relative px-[clamp(1rem,4vw,2.5rem)] ${textColor}`}>
+        <div className="absolute inset-x-0 border-t-[clamp(1px,0.2vw,2px)]" />
+        <div className="py-[clamp(1rem,3vw,2.5rem)] text-end max-w-[clamp(280px,85vw,1024px)] ml-auto">
           <AnimatedTextLines
             text={text}
-            className={`font-light uppercase value-text-responsive ${textColor}`}
+            className={`font-light uppercase text-[clamp(9px,1.8vw,16px)] leading-relaxed ${textColor}`}
+            devicePerformance={devicePerformance}
           />
         </div>
       </div>

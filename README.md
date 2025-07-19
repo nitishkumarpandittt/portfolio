@@ -1,14 +1,23 @@
-# 🚀 Nitish Kumar Pandit - Portfolio
+# 🌐 3D Awwwards-Level Developer Portfolio
 
-### Full Stack Web Developer | React.js | Node.js | Modern Web Technologies
+### Built with React, GSAP, Three.js, TailwindCSS
 
-Welcome to my professional portfolio! This is a modern, interactive web application showcasing my skills as a Full Stack Web Developer. Built with cutting-edge technologies and featuring smooth animations, responsive design, and professional UI/UX.
+This is a fully animated, interactive, 3D developer portfolio designed to **impress clients, recruiters, and hiring managers**. It's more than a portfolio—it's a web experience built with production-level code, scroll-based animations, and real-world best practices.
 
-> ⚡ A showcase of modern web development - built with React (Vite), TailwindCSS, GSAP, React Three Fiber, and Drei.
+> ⚡ Inspired by Awwwards-level sites — built with React (Vite), TailwindCSS, GSAP, React Three Fiber, and Drei.
 
-## 👨‍💻 About Me
+<br/>
+<div>
+  <img src="https://github.com/user-attachments/assets/4eaf9399-fd02-4a90-83f7-2b5a361bc032" alt="Hero" style="border-radius: 8px;"/>
+  <div style="display: flex; justify-content: space-between; margin: 20px 0;">
+    <img src="https://github.com/user-attachments/assets/155bf742-b24f-4119-89f4-87e6d88c8f53" alt="Works" style="width: 32%; border-radius: 8px;"/>
+    <img src="https://github.com/user-attachments/assets/f22b9749-85ed-434f-a5f6-df1f8e221103" alt="ContactSummary" style="width: 32%; border-radius: 8px;"/>
+    <img src="https://github.com/user-attachments/assets/3e473322-b96a-433b-aec5-ece9bab25795" alt="Contact" style="width: 32%; border-radius: 8px;"/>
+  </div>
+</div>
+<br/>
 
-I'm Nitish Kumar Pandit, a final year Computer Science student with a passion for creating modern, responsive web applications. I specialize in React, Node.js, and modern JavaScript frameworks to build seamless user experiences that help businesses grow and succeed.
+> 📺 [Watch Full YouTube Walkthrough](https://youtu.be/i0229UsdBwc)
 ---
 
 ## 🚀 Tech Stack
@@ -23,92 +32,65 @@ I'm Nitish Kumar Pandit, a final year Computer Science student with a passion fo
 
 ---
 
-## 🎯 Portfolio Features
+## 📁 Features
 
-- 🔥 **3D Hero Section** - Interactive planet animation with smooth transitions
-- 🧩 **Animated Navigation** - Smooth slide-in navbar with staggered animations
-- 🎯 **Service Showcase** - Scroll-triggered animations highlighting my expertise
-- 🖼️ **Project Gallery** - Interactive project cards with hover effects and technology stacks
-- ✍️ **About Section** - Professional introduction with animated text and visual elements
-- 🏁 **Contact Integration** - Multiple ways to connect with smooth marquee animations
-- 💼 **Fully Responsive** - Optimized for all devices and screen sizes
-- ⚡ **Performance Optimized** - Fast loading with modern build tools
+- 🔥 3D Hero Section with animated planet and golden ring
+- 🧩 Smooth slide-in Navbar with staggered link animations
+- 🎯 Scroll-triggered Service Summary with horizontal word motion
+- 🖼️ Works section with hover overlays and interactive previews
+- ✍️ About section with clip-path image reveal + typewriter text
+- 🏁 Marquee-based Contact Summary and CTA
+- 💼 Fully responsive and accessible on all screen sizes
 
 ---
 
-## 📦 Local Development
+## 📦 Setup & Installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd portfolio
-
-# Install dependencies
+git clone https://github.com/Ali-Sanati/awwwards-portfolio.git
+cd awwwards-portfolio
 npm install
-
-# Start development server
 npm run dev
 ```
 
-> Open [http://localhost:5173](http://localhost:5173) in your browser to view the portfolio.
+> Open http://localhost:5173 in your browser.
 
 ---
 
-## 🛠️ Project Structure
+## 🛠️ Customization Tips
 
-- **`/src/sections`** - Main portfolio sections (Hero, About, Services, Works, Contact)
-- **`/src/components`** - Reusable UI components and animations
-- **`/src/constants`** - Portfolio data, projects, and configuration
-- **`/public/assets`** - Images, icons, and static assets
-- **`tailwind.config.js`** - Styling configuration and custom themes
+- Change text, images, and links in /constants/index.js
 
----
+- Update 3D models and scene in Hero.jsx
 
-## 💼 My Expertise
+- Add your own contact info in Contact.jsx
 
-**Frontend Development:**
-- React.js, Next.js, JavaScript (ES6+)
-- TailwindCSS, GSAP Animations
-- Responsive Design, Mobile-First Approach
-
-**Backend Development:**
-- Node.js, Express.js
-- MongoDB, Firebase
-- RESTful APIs, Authentication Systems
-
-**Tools & Technologies:**
-- Git, Webpack, Figma
-- AWS, Deployment & DevOps
-- Modern Development Workflow
+- Adjust colors, fonts, and layout via tailwind.config.js
 
 ---
 
-## 📞 Get In Touch
+## 🔗 Assets
 
-I'm always open to discussing new opportunities, collaborations, and exciting projects!
+Assets used in the project can be found [here](https://github.com/user-attachments/files/19820923/public.zip)
 
-**Email:** nitishpandit312@gmail.com
-**Phone:** +91 99156 09635
-**LinkedIn:** [Connect with me](https://linkedin.com/in/nitish-pandit)
-**GitHub:** [View my repositories](https://github.com/nitish-pandit)
-**Instagram:** [Follow my journey](https://instagram.com/nitish.pandit)
+---
+
+## 📣 Like the project?
+
+If this helped you build or inspire your own site:
+
+- ⭐ Star this repo
+
+- 📺 [Watch the full walkthrough on YouTube](https://youtu.be/i0229UsdBwc)
+
+- 📬 [Connect on LinkedIn](https://www.linkedin.com/in/ali-sanati)
+
+- 📷 [Follow me on Instagram](https://www.instagram.com/ali.sanatidev/reels/)
 
 ---
 
 ## 🤝 Let’s Build Together
 
-Whether you're looking for a **Full Stack Developer** for your team, need a **custom web application**, or want to collaborate on an exciting project, I'd love to hear from you!
+Drop a comment on the video or open an issue with your idea!
 
-> 💡 **"Just Imagine, I Code"** - Let's turn your ideas into reality with clean, scalable, and modern web solutions.
-
----
-
-## ⭐ Support
-
-If you found this portfolio inspiring or helpful:
-
-- ⭐ Star this repository
-- 🔄 Share it with others
-- 💬 Reach out for collaborations
-
-**Built with ❤️ by Nitish Kumar Pandit**
+> 📩 Like, subscribe, and let me know what kind of project you want to build together!

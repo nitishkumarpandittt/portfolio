@@ -21,32 +21,25 @@ const ContactSummary = () => {
   ];
 
   useGSAP(() => {
-    // Simple fade-in animation without pinning to avoid glitches
-    gsap.fromTo(containerRef.current,
-      {
-        opacity: 0,
-        y: 50,
+    gsap.to(containerRef.current, {
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "center center",
+        end: "+=800 center",
+        scrub: 0.5,
+        pin: true,
+        pinSpacing: true,
+        markers: false,
       },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    });
   }, []);
   return (
     <section
       ref={containerRef}
-      className="flex flex-col items-center justify-center w-full overflow-hidden py-16 sm:py-20 md:py-24 gap-8 sm:gap-12"
+      className="flex flex-col items-center justify-between min-h-screen gap-12 mt-16"
     >
       <Marquee items={items} />
-      <div className="overflow-hidden font-light text-center contact-text-responsive px-4 sm:px-0">
+      <div className="overflow-hidden font-light text-center contact-text-responsive">
         <p>
           “ Let’s build a <br />
           <span className="font-normal">memorable</span> &{" "}
