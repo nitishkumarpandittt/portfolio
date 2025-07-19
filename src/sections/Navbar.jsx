@@ -107,9 +107,9 @@ const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className="fixed z-50 flex flex-col justify-between w-full h-full px-[clamp(1rem,4vw,2.5rem)] uppercase bg-black text-white/80 py-[clamp(4rem,8vw,5rem)] gap-y-[clamp(2rem,4vw,2rem)] md:w-1/2 md:left-1/2"
+        className="fixed z-50 flex flex-col justify-between w-full h-full px-[clamp(1rem,4vw,2.5rem)] uppercase bg-black text-white/80 py-[clamp(1.5rem,3vw,2.5rem)] gap-y-[clamp(0.8rem,1.5vw,1.2rem)] md:w-1/2 md:right-0"
       >
-        <div className="flex flex-col text-[clamp(20px,5vw,56px)] gap-y-[clamp(0.2rem,0.8vw,0.25rem)]">
+        <div className="flex flex-col text-[clamp(18px,3.5vw,42px)] gap-y-[clamp(0.1rem,0.4vw,0.2rem)]">
           {[
             { name: "home", target: "home" },
             { name: "services", target: "services" },
@@ -136,7 +136,7 @@ const Navbar = () => {
         </div>
         <div
           ref={contactRef}
-          className="flex flex-col flex-wrap justify-between gap-[clamp(1rem,3vw,1.5rem)] md:flex-row"
+          className="flex flex-col flex-wrap justify-between gap-[clamp(0.6rem,1.5vw,1rem)] md:flex-row"
         >
           <div className="font-light">
             <p className="text-[clamp(16px,2.5vw,18px)] tracking-wider text-white/50 uppercase">E-mail</p>

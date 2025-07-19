@@ -32,6 +32,7 @@ customers and outperform their competition.`;
             alpha: true
           }}
           dpr={isMobile ? [1, 1.5] : [1, 2]}
+          frameloop="always"
         >
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />

@@ -13,6 +13,12 @@ export function Planet(props) {
   const ringContainer = useRef(null);
   const { nodes, materials } = useGLTF("/models/Planet.glb");
 
+  // Check if model loaded properly
+  if (!nodes || !materials) {
+    console.error("Planet model failed to load");
+    return null;
+  }
+
   useGSAP(() => {
     const tl = gsap.timeline();
     tl.from(shapeContainer.current.position, {

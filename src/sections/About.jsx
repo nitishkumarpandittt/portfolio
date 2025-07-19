@@ -16,7 +16,7 @@ const About = () => {
       scrollTrigger: {
         trigger: ".about-subtitle", // Target the subtitle specifically
         start: "top 0%", // Start when subtitle hits top of screen
-        end: "bottom 20%",
+        end: "bottom 0%",
         scrub: true,
         markers: false,
       },
