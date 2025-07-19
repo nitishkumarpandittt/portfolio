@@ -7,29 +7,11 @@ import { useGSAP } from "@gsap/react";
 
 const Works = () => {
   const overlayRefs = useRef([]);
-  const previewRef = useRef(null);
-
   const [currentIndex, setCurrentIndex] = useState(null);
-  const text = `Featured projects that have been crafted 
+  const text = `Featured projects that have been crafted
   with passion to drive results and impact.`;
 
-  const mouse = useRef({ x: 0, y: 0 });
-  const moveX = useRef(null);
-  const moveY = useRef(null);
-
   useGSAP(() => {
-    // Only create quickTo animations if previewRef exists
-    if (previewRef.current) {
-      moveX.current = gsap.quickTo(previewRef.current, "x", {
-        duration: 1.5,
-        ease: "power3.out",
-      });
-      moveY.current = gsap.quickTo(previewRef.current, "y", {
-        duration: 2,
-        ease: "power3.out",
-      });
-    }
-
     gsap.from("#project", {
       y: 100,
       opacity: 0,
@@ -62,15 +44,6 @@ const Works = () => {
         ease: "power2.out",
       }
     );
-
-    if (previewRef.current) {
-      gsap.to(previewRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
   };
 
   const handleMouseLeave = (index) => {
@@ -86,26 +59,9 @@ const Works = () => {
       duration: 0.2,
       ease: "power2.in",
     });
-
-    if (previewRef.current) {
-      gsap.to(previewRef.current, {
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
   };
 
-  const handleMouseMove = (e) => {
-    if (window.innerWidth < 768) return;
-    mouse.current.x = e.clientX + 24;
-    mouse.current.y = e.clientY + 24;
-    if (moveX.current && moveY.current) {
-      moveX.current(mouse.current.x);
-      moveY.current(mouse.current.y);
-    }
-  };
+
 
   return (
     <section id="work" className="flex flex-col">
@@ -115,10 +71,7 @@ const Works = () => {
         text={text}
         textColor={"text-black"}
       />
-      <div
-        className="relative flex flex-col font-light pb-[clamp(2rem,4vw,4rem)]"
-        onMouseMove={handleMouseMove}
-      >
+      <div className="relative flex flex-col font-light pb-[clamp(2rem,4vw,4rem)]">
         {projects.map((project, index) => (
           <div
             key={project.id}
