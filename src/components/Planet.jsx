@@ -20,6 +20,11 @@ export function Planet(props) {
   }
 
   useGSAP(() => {
+    if (!shapeContainer.current || !shperesContainer.current || !ringContainer.current) {
+      return;
+    }
+
+    // Initial entrance animation
     const tl = gsap.timeline();
     tl.from(shapeContainer.current.position, {
       y: 5,
@@ -48,6 +53,17 @@ export function Planet(props) {
       },
       "<"
     );
+
+    // Invisible continuous animation to keep render loop active
+    // This creates tiny movements that keep WebGL context alive without visible changes
+    gsap.to(shapeContainer.current.position, {
+      y: "+=0.001", // Microscopic movement
+      duration: 1,
+      ease: "none",
+      repeat: -1,
+      yoyo: true,
+      delay: 12 // Start after entrance animation completes
+    });
   }, []);
 
   return (

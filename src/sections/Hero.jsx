@@ -3,13 +3,39 @@ import { Planet } from "../components/Planet";
 import { Environment, Float, Lightformer } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { Suspense } from "react";
+import { Suspense, useRef, useEffect } from "react";
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 853 });
+  const canvasRef = useRef(null);
   const text = `I create premium websites and apps that
 help growing brands and startups convert more
 customers and outperform their competition.`;
+
+  // WebGL Context Loss Detection and Recovery
+  useEffect(() => {
+    const canvas = canvasRef.current?.querySelector('canvas');
+    if (!canvas) return;
+
+    const handleContextLost = (event) => {
+      event.preventDefault();
+      console.warn('WebGL context lost - attempting to restore...');
+    };
+
+    const handleContextRestored = () => {
+      console.log('WebGL context restored');
+      // Force re-render by updating a state or triggering re-mount
+      window.location.reload(); // Simple but effective recovery
+    };
+
+    canvas.addEventListener('webglcontextlost', handleContextLost, false);
+    canvas.addEventListener('webglcontextrestored', handleContextRestored, false);
+
+    return () => {
+      canvas.removeEventListener('webglcontextlost', handleContextLost);
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored);
+    };
+  }, []);
 
   return (
     <section id="home" className="flex flex-col justify-end min-h-screen pb-[clamp(2rem,6vh,4rem)]">
@@ -20,6 +46,7 @@ customers and outperform their competition.`;
         textColor={"text-black"}
       />
       <figure
+        ref={canvasRef}
         className="absolute inset-0 -z-50"
         style={{ width: "100vw", height: "100vh" }}
       >
