@@ -18,14 +18,17 @@ const Works = () => {
   const moveY = useRef(null);
 
   useGSAP(() => {
-    moveX.current = gsap.quickTo(previewRef.current, "x", {
-      duration: 1.5,
-      ease: "power3.out",
-    });
-    moveY.current = gsap.quickTo(previewRef.current, "y", {
-      duration: 2,
-      ease: "power3.out",
-    });
+    // Only create quickTo animations if previewRef exists
+    if (previewRef.current) {
+      moveX.current = gsap.quickTo(previewRef.current, "x", {
+        duration: 1.5,
+        ease: "power3.out",
+      });
+      moveY.current = gsap.quickTo(previewRef.current, "y", {
+        duration: 2,
+        ease: "power3.out",
+      });
+    }
 
     gsap.from("#project", {
       y: 100,
@@ -60,12 +63,14 @@ const Works = () => {
       }
     );
 
-    gsap.to(previewRef.current, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+    if (previewRef.current) {
+      gsap.to(previewRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
   };
 
   const handleMouseLeave = (index) => {
@@ -82,20 +87,24 @@ const Works = () => {
       ease: "power2.in",
     });
 
-    gsap.to(previewRef.current, {
-      opacity: 0,
-      scale: 0.95,
-      duration: 0.3,
-      ease: "power2.out",
-    });
+    if (previewRef.current) {
+      gsap.to(previewRef.current, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
   };
 
   const handleMouseMove = (e) => {
     if (window.innerWidth < 768) return;
     mouse.current.x = e.clientX + 24;
     mouse.current.y = e.clientY + 24;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
+    if (moveX.current && moveY.current) {
+      moveX.current(mouse.current.x);
+      moveY.current(mouse.current.y);
+    }
   };
 
   return (
