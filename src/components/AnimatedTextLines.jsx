@@ -26,6 +26,7 @@ export const AnimatedTextLines = ({ text, className, devicePerformance = 'medium
         scrollTrigger: {
           trigger: containerRef.current,
           toggleActions: "play none none reverse",
+          start: "top 90%", // Start animation earlier for hero section visibility
         },
       });
     }

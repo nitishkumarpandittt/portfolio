@@ -14,8 +14,8 @@ const About = () => {
     gsap.to("#about", {
       scale: 0.95,
       scrollTrigger: {
-        trigger: "#about",
-        start: "bottom 80%",
+        trigger: ".about-subtitle", // Target the subtitle specifically
+        start: "top 0%", // Start when subtitle hits top of screen
         end: "bottom 20%",
         scrub: true,
         markers: false,
@@ -35,12 +35,14 @@ const About = () => {
   });
   return (
     <section id="about" className="bg-black rounded-b-4xl">
-      <AnimatedHeaderSection
-        subTitle={"Versatile Developer not just a coder"}
-        title={"About"}
-        text={text}
-        textColor={"text-white"}
-      />
+      <div className="about-subtitle">
+        <AnimatedHeaderSection
+          subTitle={"Versatile Developer not just a coder"}
+          title={"About"}
+          text={text}
+          textColor={"text-white"}
+        />
+      </div>
       <div className="flex flex-col items-center justify-between gap-12 px-10 pb-[clamp(2rem,4vw,3rem)] text-[clamp(12px,2.5vw,32px)] font-light tracking-wide lg:flex-row text-white/60">
         <img
           ref={imgRef}

@@ -12,7 +12,7 @@ help growing brands and startups convert more
 customers and outperform their competition.`;
 
   return (
-    <section id="home" className="flex flex-col justify-end min-h-screen">
+    <section id="home" className="flex flex-col justify-center items-start min-h-screen pt-[clamp(2rem,8vh,4rem)]">
       <AnimatedHeaderSection
         subTitle={"Software Development Engineer"}
         title={"Nitish Pandit"}

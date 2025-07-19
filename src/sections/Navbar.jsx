@@ -139,19 +139,19 @@ const Navbar = () => {
           className="flex flex-col flex-wrap justify-between gap-[clamp(1rem,3vw,1.5rem)] md:flex-row"
         >
           <div className="font-light">
-            <p className="text-[clamp(8px,1.5vw,12px)] tracking-wider text-white/50 uppercase">E-mail</p>
-            <p className="text-[clamp(10px,2vw,14px)] tracking-wide lowercase text-pretty">
+            <p className="text-[clamp(16px,2.5vw,18px)] tracking-wider text-white/50 uppercase">E-mail</p>
+            <p className="text-[clamp(18px,3vw,20px)] tracking-wide lowercase text-pretty">
               nitishkumarpandit312@gmail.com
             </p>
           </div>
           <div className="font-light">
-            <p className="text-[clamp(8px,1.5vw,12px)] tracking-wider text-white/50 uppercase">Social Media</p>
+            <p className="text-[clamp(16px,2.5vw,18px)] tracking-wider text-white/50 uppercase">Social Media</p>
             <div className="flex flex-col flex-wrap md:flex-row gap-x-[clamp(0.5rem,1vw,0.5rem)]">
               {socials.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
-                  className="text-[clamp(8px,1.5vw,12px)] leading-relaxed tracking-wide uppercase hover:text-white transition-colors duration-300"
+                  className="text-[clamp(16px,2.5vw,18px)] leading-relaxed tracking-wide uppercase hover:text-white transition-colors duration-300"
                 >
                   {"{ "}
                   {social.name}
