@@ -38,7 +38,7 @@ customers and outperform their competition.`;
   }, []);
 
   return (
-    <section id="home" className="flex flex-col justify-end min-h-screen pb-[clamp(2rem,6vh,4rem)]">
+    <section id="home" className="relative flex flex-col justify-end min-h-screen pb-[clamp(2rem,6vh,4rem)] overflow-hidden">
       <AnimatedHeaderSection
         subTitle={"Software Development Engineer"}
         title={"Nitish Pandit"}
@@ -47,8 +47,8 @@ customers and outperform their competition.`;
       />
       <figure
         ref={canvasRef}
-        className="absolute inset-0 -z-50"
-        style={{ width: "100vw", height: "100vh" }}
+        className="absolute inset-0 -z-10"
+        style={{ width: "100%", height: "100%" }}
       >
         <Canvas
           shadows
