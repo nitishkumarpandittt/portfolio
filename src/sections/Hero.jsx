@@ -56,10 +56,20 @@ customers and outperform their competition.`;
           gl={{
             antialias: !isMobile,
             powerPreference: isMobile ? "low-power" : "high-performance",
-            alpha: true
+            alpha: true,
+            preserveDrawingBuffer: isMobile
           }}
           dpr={isMobile ? [1, 1.5] : [1, 2]}
           frameloop="always"
+          onCreated={({ gl }) => {
+            // Simple WebGL context loss detection for mobile
+            if (isMobile) {
+              gl.domElement.addEventListener('webglcontextlost', (e) => {
+                e.preventDefault();
+                console.warn('WebGL context lost on mobile');
+              });
+            }
+          }}
         >
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
