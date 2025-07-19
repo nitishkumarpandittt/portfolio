@@ -127,33 +127,7 @@ body {
   }
 }
 
-/* Low-tier device optimizations */
-.low-tier-device {
-  /* Disable expensive CSS features */
-  * {
-    will-change: auto !important;
-    transform: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-    box-shadow: none !important;
-  }
 
-  /* Simplify animations */
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  /* Reduce visual complexity */
-  .bg-gradient-to-r,
-  .bg-gradient-to-l,
-  .bg-gradient-to-t,
-  .bg-gradient-to-b {
-    background: var(--color-primary) !important;
-  }
-}
 
 /* Performance optimizations for all devices */
 * {

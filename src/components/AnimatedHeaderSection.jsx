@@ -6,7 +6,6 @@ const AnimatedHeaderSection = ({
   title,
   text,
   textColor,
-  devicePerformance = 'medium',
 }) => {
   const shouldSplitTitle = title.includes(" ");
   const titleParts = shouldSplitTitle ? title.split(" ") : [title];
@@ -35,7 +34,6 @@ const AnimatedHeaderSection = ({
           <AnimatedTextLines
             text={text}
             className={`font-light uppercase text-[clamp(9px,1.8vw,16px)] leading-relaxed ${textColor}`}
-            devicePerformance={devicePerformance}
           />
         </div>
       </div>
