@@ -1,96 +1,119 @@
-# 🌐 3D Awwwards-Level Developer Portfolio
+# 🌟 Nitish Kumar Pandit - Developer Portfolio
 
-### Built with React, GSAP, Three.js, TailwindCSS
+### A Modern 3D Interactive Portfolio Experience
 
-This is a fully animated, interactive, 3D developer portfolio designed to **impress clients, recruiters, and hiring managers**. It's more than a portfolio—it's a web experience built with production-level code, scroll-based animations, and real-world best practices.
+Welcome to my personal portfolio website - a cutting-edge web experience that showcases my skills as a full-stack developer and final year student. Built with modern technologies and smooth animations to create an engaging user experience.
 
-> ⚡ Inspired by Awwwards-level sites — built with React (Vite), TailwindCSS, GSAP, React Three Fiber, and Drei.
-
-<br/>
-<div>
-  <img src="https://github.com/user-attachments/assets/4eaf9399-fd02-4a90-83f7-2b5a361bc032" alt="Hero" style="border-radius: 8px;"/>
-  <div style="display: flex; justify-content: space-between; margin: 20px 0;">
-    <img src="https://github.com/user-attachments/assets/155bf742-b24f-4119-89f4-87e6d88c8f53" alt="Works" style="width: 32%; border-radius: 8px;"/>
-    <img src="https://github.com/user-attachments/assets/f22b9749-85ed-434f-a5f6-df1f8e221103" alt="ContactSummary" style="width: 32%; border-radius: 8px;"/>
-    <img src="https://github.com/user-attachments/assets/3e473322-b96a-433b-aec5-ece9bab25795" alt="Contact" style="width: 32%; border-radius: 8px;"/>
-  </div>
-</div>
-<br/>
-
-> 📺 [Watch Full YouTube Walkthrough](https://youtu.be/i0229UsdBwc)
----
-
-## 🚀 Tech Stack
-
-| Technology       | Description                             |
-| ---------------- | --------------------------------------- |
-| **React (Vite)** | Fast dev server and production bundling |
-| **Tailwind CSS** | Utility-first styling for components    |
-| **GSAP**         | Scroll-based animation and motion logic |
-| **Three.js**     | 3D scenes powered by React Three Fiber  |
-| **Drei**         | Useful helpers for 3D rendering         |
+> 🚀 **Live Portfolio**: [nitishh.in](https://nitishh.in)
 
 ---
 
-## 📁 Features
+## 👨‍💻 About Me
 
-- 🔥 3D Hero Section with animated planet and golden ring
-- 🧩 Smooth slide-in Navbar with staggered link animations
-- 🎯 Scroll-triggered Service Summary with horizontal word motion
-- 🖼️ Works section with hover overlays and interactive previews
-- ✍️ About section with clip-path image reveal + typewriter text
-- 🏁 Marquee-based Contact Summary and CTA
-- 💼 Fully responsive and accessible on all screen sizes
+I'm **Nitish Kumar Pandit**, a passionate final year student and full-stack developer who loves building innovative web applications. I specialize in creating seamless digital experiences that combine functionality with beautiful design.
+
+### 🎯 What I Do
+- **Full-Stack Development** - Building scalable web applications from frontend to backend
+- **DevOps & Cloud Solutions** - Automating deployments and managing cloud infrastructure
+- **Web & Mobile Apps** - Creating responsive, cross-platform applications
+- **Game Development** - Crafting interactive 2D games with educational elements
 
 ---
 
-## 📦 Setup & Installation
+## 🛠️ Technologies Used
+
+This portfolio is built with cutting-edge technologies:
+
+- **Frontend**: React.js, Vite, TailwindCSS
+- **3D Graphics**: Three.js, React Three Fiber, Drei
+- **Animations**: GSAP, Framer Motion
+- **Styling**: TailwindCSS with custom animations
+- **Icons**: Iconify React
+- **Performance**: Optimized for 60fps on all devices
+
+---
+
+## ✨ Portfolio Features
+
+- 🌍 **3D Hero Section** - Interactive planet with golden ring animation
+- 🎨 **Smooth Animations** - GSAP-powered scroll triggers and micro-interactions
+- 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
+- 🚀 **Live Project Links** - Click on project cards to view live demos
+- 💼 **Experience Timeline** - Interactive work experience showcase
+- 📧 **Contact Integration** - Easy ways to get in touch
+- ⚡ **Performance Optimized** - Fast loading with smooth 60fps animations
+
+---
+
+## 🎯 Featured Projects
+
+### 💰 [CashTrack - AI Powered Expense Tracker](https://cashtrack.nitishh.in)
+Smart expense tracking with AI-powered insights
+- **Tech**: Next.js, Clerk, Neon Database, Recharts, Framer Motion
+
+### 💻 [CompileX - Online IDE](https://compilex.nitishh.in)
+Full-featured online code editor and compiler
+- **Tech**: React.js, Node.js, Express.js, MongoDB, Monaco Editor
+
+### 🔄 [ModiFile - File Converter](https://modifile.nitishh.in)
+Simple and powerful file conversion tool
+- **Tech**: Next.js, TypeScript, FFmpeg.wasm, TailwindCSS
+
+### 🔗 [ShrinkLink - URL Shortener](https://sl.nitishh.in)
+Fast and reliable URL shortening service
+- **Tech**: React.js, Node.js, Express.js, MongoDB, TailwindCSS
+
+### 📝 [WaveLink - Blogging Platform](https://wavelink.nitishh.in)
+Modern blogging platform with rich text editing
+- **Tech**: React.js, Appwrite, TinyMCE, Redux
+
+---
+
+## 🚀 Getting Started
+
+Want to run this portfolio locally? Here's how:
 
 ```bash
-git clone https://github.com/Ali-Sanati/awwwards-portfolio.git
-cd awwwards-portfolio
+# Clone the repository
+git clone https://github.com/Nitish-Kumar-Pandit/portfolio.git
+
+# Navigate to project directory
+cd portfolio
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
-> Open http://localhost:5173 in your browser.
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
 ---
 
-## 🛠️ Customization Tips
+## 📁 Project Structure
 
-- Change text, images, and links in /constants/index.js
-
-- Update 3D models and scene in Hero.jsx
-
-- Add your own contact info in Contact.jsx
-
-- Adjust colors, fonts, and layout via tailwind.config.js
-
----
-
-## 🔗 Assets
-
-Assets used in the project can be found [here](https://github.com/user-attachments/files/19820923/public.zip)
+```
+src/
+├── components/          # Reusable UI components
+├── sections/           # Main page sections
+├── constants/          # Data and configuration
+├── assets/            # Images and static files
+└── styles/            # Global styles and animations
+```
 
 ---
 
-## 📣 Like the project?
+## 🤝 Let's Connect
 
-If this helped you build or inspire your own site:
+I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
 
-- ⭐ Star this repo
+- 🌐 **Portfolio**: [nitishh.in](https://nitishh.in)
+- 💼 **LinkedIn**: [linkedin.com/in/nitishkumarpandittt](https://www.linkedin.com/in/nitishkumarpandittt/)
+- 🐱 **GitHub**: [github.com/Nitish-Kumar-Pandit](https://github.com/Nitish-Kumar-Pandit)
+- 📸 **Instagram**: [instagram.com/nitishpandittt](https://www.instagram.com/nitishpandittt/)
 
-- 📺 [Watch the full walkthrough on YouTube](https://youtu.be/i0229UsdBwc)
-
-- 📬 [Connect on LinkedIn](https://www.linkedin.com/in/ali-sanati)
-
-- 📷 [Follow me on Instagram](https://www.instagram.com/ali.sanatidev/reels/)
 
 ---
 
-## 🤝 Let’s Build Together
-
-Drop a comment on the video or open an issue with your idea!
-
-> 📩 Like, subscribe, and let me know what kind of project you want to build together!
+**Built with ❤️ by Nitish Kumar Pandit**
