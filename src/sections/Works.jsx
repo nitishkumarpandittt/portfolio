@@ -61,6 +61,12 @@ const Works = () => {
     });
   };
 
+  const handleProjectClick = (project) => {
+    if (project.href && project.href.trim() !== "") {
+      window.open(project.href, "_blank", "noopener,noreferrer");
+    }
+  };
+
 
 
   return (
@@ -79,6 +85,7 @@ const Works = () => {
             className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
+            onClick={() => handleProjectClick(project)}
           >
             {/* overlay */}
             <div

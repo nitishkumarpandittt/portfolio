@@ -83,7 +83,7 @@ export const projects = [
     name: "CashTrack - AI Powered Expense Tracker",
     description:
       "An online store specializing in phone accessories including cases, chargers, cables, and power banks with MagSafe compatibility.",
-    href: "",
+    href: "https://cashtrack.nitishh.in", // Replace with your actual live URL
     image: "/assets/projects/cashtrack.png",
     bgImage: "/assets/backgrounds/blanket.jpg",
     frameworks: [
@@ -99,7 +99,7 @@ export const projects = [
     name: "CompileX - An Online IDE",
     description:
       "An online store specializing in rare and decorative plants with a clean, user-friendly interface.",
-    href: "",
+    href: "https://compilex.nitishh.in", // Replace with your actual live URL
     image: "/assets/projects/compileX.png",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
@@ -115,7 +115,7 @@ export const projects = [
     name: "ModiFile - Convert files simply",
     description:
       "An e-commerce platform for Apple products and accessories with deals and category filtering.",
-    href: "",
+    href: "https://modifile.nitishh.in", // Replace with your actual live URL
     image: "/assets/projects/Modifile.png",
     bgImage: "/assets/backgrounds/map.jpg",
     frameworks: [
@@ -130,7 +130,7 @@ export const projects = [
     name: "ShrinkLink - Transform your links",
     description:
       "A multi-category online shop featuring electronics, home appliances, and gaming gear with special offers.",
-    href: "",
+    href: "https://sl.nitishh.in", // Replace with your actual live URL
     image: "/assets/projects/shrinklink.png",
     bgImage: "/assets/backgrounds/poster.jpg",
     frameworks: [
@@ -146,7 +146,7 @@ export const projects = [
     name: "WaveLink - Stories that Matter",
     description:
       "A curated collection of designer home decor items, including furniture and artisan vases.",
-    href: "",
+    href: "https://wavelink.nitishh.in", // Replace with your actual live URL
     image: "/assets/projects/wavelink.png",
     bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
