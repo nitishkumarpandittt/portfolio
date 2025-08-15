@@ -65,7 +65,7 @@ const About = () => {
               rel="noopener noreferrer"
               className="px-[clamp(1.2rem,2.5vw,3rem)] py-[clamp(0.5rem,1.2vw,1rem)] text-[clamp(8px,1.5vw,14px)] font-light tracking-wide text-primary border  rounded-full hover:bg-[#1A1A1A] hover:text-primary  transition-all duration-500 text-center uppercase"
             >
-              Download Resume
+              Check Resume
             </a>
           </div>
         </div>
