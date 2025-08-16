@@ -46,7 +46,7 @@ const Contact = () => {
               <h2 className="text-[clamp(14px,2.5vw,18px)]">E-mail</h2>
               <div className="w-full h-px my-[clamp(0.3rem,0.8vw,0.5rem)] bg-white/30" />
               <p className="text-[clamp(13px,2.3vw,18px)] tracking-wide lowercase">
-                nitishkumarpandit312@gmail.com
+                workwithnitishhh@gmail.com
               </p>
             </div>
             <div className="social-link mb-2">

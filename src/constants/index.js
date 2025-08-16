@@ -180,5 +180,5 @@ export const workExperience = [
 export const socials = [
   { name: "Instagram", href: "https://www.instagram.com/nitishpandittt/" },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/nitishkumarpandittt/" },
-  { name: "GitHub", href: "https://github.com/Nitish-Kumar-Pandit" },
+  { name: "GitHub", href: "https://github.com/nitishkumarpandittt" },
 ];

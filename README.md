@@ -110,7 +110,7 @@ I'm always open to discussing new opportunities, collaborations, or just having 
 
 - 🌐 **Portfolio**: [nitishh.in](https://nitishh.in)
 - 💼 **LinkedIn**: [linkedin.com/in/nitishkumarpandittt](https://www.linkedin.com/in/nitishkumarpandittt/)
-- 🐱 **GitHub**: [github.com/Nitish-Kumar-Pandit](https://github.com/Nitish-Kumar-Pandit)
+- 🐱 **GitHub**: [github.com/nitishkumarpandittt](https://github.com/nitishkumarpandittt)
 - 📸 **Instagram**: [instagram.com/nitishpandittt](https://www.instagram.com/nitishpandittt/)
 
 
