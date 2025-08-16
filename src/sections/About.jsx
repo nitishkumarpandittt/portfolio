@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import resume from "/Resume.pdf";
+import resume from "/resume.pdf";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { AnimatedTextLines } from "../components/AnimatedTextLines";
 import { useGSAP } from "@gsap/react";
