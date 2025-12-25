@@ -18,11 +18,12 @@ const readexPro = Readex_Pro({
 export const metadata: Metadata = {
   metadataBase: new URL('https://nitishh.in'), // Replace with your actual domain
   title: {
-    template: "%s | Nitish Kumar Pandit - Full Stack Developer",
-    default: "Nitish Kumar Pandit - Full Stack Developer",
+    template: "%s | Nitish - Software Engineer",
+    default: "Nitish - Software Engineer",
   },
   description: "Full-stack developer specializing in React, Next.js, Node.js, TypeScript, and modern web technologies. Creating scalable, accessible digital experiences. Based in Panchkula, Haryana.",
   keywords: [
+    "Nitish Software Engineer",
     "Full Stack Developer",
     "React Developer",
     "Next.js Developer",
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://nitishh.in",
     siteName: "Nitish Kumar Pandit - Portfolio",
-    title: "Nitish Kumar Pandit - Full Stack Developer",
+    title: "Nitish - Software Engineer",
     description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies. View my projects and get in touch.",
     images: [
       {

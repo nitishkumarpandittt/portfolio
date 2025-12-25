@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://yourportfolio.com' // Replace with your actual domain
+  const baseUrl = 'https://nitishh.in' // Replace with your actual domain
 
   return [
     {
