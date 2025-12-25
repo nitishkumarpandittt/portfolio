@@ -15,7 +15,7 @@ const Navbar = () => {
           <FlipLink href="/contact">Contact</FlipLink>
           <a 
             href="/resume.pdf" 
-            download="Nitish_Kumar_Pandit_Resume.pdf"
+            target="_blank"
             className="text-sm font-light hover:opacity-70 transition-opacity"
           >
             Resume

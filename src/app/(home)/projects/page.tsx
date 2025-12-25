@@ -40,7 +40,7 @@ const ProjectsPage = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, idx) => (
+                  {project.technologies.map((tech, idx) => (
                     <span
                       key={idx}
                       className="text-xs px-2 py-1 bg-background rounded-md"
@@ -48,14 +48,9 @@ const ProjectsPage = () => {
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-xs px-2 py-1 bg-background rounded-md">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex gap-5">
                   {project.github !== "#" && (
                     <Link
                       href={project.github}
@@ -73,7 +68,7 @@ const ProjectsPage = () => {
                       className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
                     >
                       <FaExternalLinkAlt className="w-4 h-4" />
-                      Demo
+                      Live
                     </Link>
                   )}
                 </div>
@@ -87,4 +82,3 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
-

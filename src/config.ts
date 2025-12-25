@@ -3,7 +3,8 @@ export const config = {
     name: "Nitish Kumar Pandit",
     title: "Software Engineer",
     bio: "I turn ideas into full-stack products that are easy to use and accessible to everyone.",
-    avatar: "https://i.pinimg.com/736x/d4/a5/f5/d4a5f585a3470cf0c42458970be37dbc.jpg",
+    avatar:
+      "https://i.pinimg.com/736x/d4/a5/f5/d4a5f585a3470cf0c42458970be37dbc.jpg",
   },
   social: {
     github: "nitishkumarpandittt",
@@ -13,48 +14,90 @@ export const config = {
   projects: [
     {
       id: 1,
-      title: "AI-Powered Code Review Assistant",
-      description: "An intelligent code review platform that uses machine learning to analyze pull requests, detect bugs, suggest optimizations, and enforce coding standards.",
+      title: "AI-Powered Smart Expense Management System",
+      description:
+        "An AI-powered expense tracker that analyzes your spending habits and offers intelligent insights for better financial management.",
       image: "/projects/project-1.webp",
-      technologies: ["Python", "TensorFlow", "React", "FastAPI", "PostgreSQL", "Docker"],
-      github: "#",
-      demo: "#",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Drizzle ORM",
+        "Neon DB",
+        "Clerk",
+        "Framer Motion",
+        "Recharts"
+      ],
+      github: "https://github.com/nitishkumarpandittt/CashTrackhttps://github.com/nitishkumarpandittt/WaveLink",
+      demo: "https://cashtrack.nitishh.in",
     },
     {
       id: 2,
-      title: "Real-time Collaborative Whiteboard",
-      description: "A next-generation collaborative whiteboard platform with infinite canvas, real-time synchronization, and advanced drawing tools.",
+      title: " Cloud-Based Code Execution and Compilation IDE",
+      description:
+        "A cloud-based IDE that supports multiple programming languages for seamless code execution and compilation in the browser.",
       image: "/projects/project-2.webp",
-      technologies: ["TypeScript", "WebRTC", "Socket.io", "Canvas API", "Node.js", "Redis"],
-      github: "#",
-      demo: "#",
+      technologies: [
+        "React 18",
+        "Node.js",
+        "MongoDB",
+        "Express.js",
+        "JWT",
+        "Monaco Editor",
+      ],
+      github: "https://github.com/nitishkumarpandittt/CompileX",
+      demo: "https://compilex.nitishh.in",
     },
     {
       id: 3,
-      title: "Blockchain Voting System",
-      description: "A secure, transparent, and decentralized voting platform built on Ethereum. Features smart contract-based voting and anonymous ballots.",
+      title: "A Modern + SEO-Optimized Blogging Platform",
+      description:
+        "A modern blogging platform crafted for creators to publish and manage content with a clean, SEO-friendly interface.",
       image: "/projects/project-3.webp",
-      technologies: ["Solidity", "Web3.js", "React", "Ethereum", "IPFS", "MetaMask"],
-      github: "#",
-      demo: "#",
+      technologies: [
+        "React 18",
+        "Redux",
+        "Appwrite",
+        "Framer Motion",
+        "Tiny MCE",
+        "React Hook Form",
+      ],
+      github: "https://github.com/nitishkumarpandittt/WaveLink",
+      demo: "https://wavelink.nitishh.in",
     },
     {
       id: 4,
-      title: "Cloud Infrastructure Dashboard",
-      description: "A comprehensive cloud management platform for monitoring, managing, and optimizing multi-cloud infrastructure.",
+      title: "URL Shortener and QR code generation with Analytics",
+      description:
+        "Tracks link performance metrics like clicks and location data to help users measure engagement easily.",
       image: "/projects/project-4.webp",
-      technologies: ["Go", "Kubernetes", "Grafana", "Prometheus", "Terraform", "React"],
-      github: "#",
-      demo: "#",
+      technologies: [
+        "React 19",
+        "Redux",
+        "Tanstack",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT"
+      ],
+      github: "https://github.com/nitishkumarpandittt/ShrinkLink",
+      demo: "https://sl.nitishh.in",
     },
     {
       id: 5,
-      title: "Neural Network Visualizer",
-      description: "An interactive web application for visualizing, training, and experimenting with neural networks.",
+      title: "Simple and Secure Browser Based File Conversion Tool",
+      description:
+        "A secure browser-based file converter that enables quick conversion across multiple file formats without installations.",
       image: "/projects/project-5.webp",
-      technologies: ["Python", "TensorFlow.js", "D3.js", "Next.js", "WebGL", "TypeScript"],
-      github: "#",
-      demo: "#",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Framer Motion",
+        "Web Assembly",
+        "React Dropzone",
+        "Lenis",
+      ],
+      github: "https://github.com/nitishkumarpandittt/ModiFile",
+      demo: "https://modifile.nitishh.in"
     },
   ],
   skills: [
@@ -72,4 +115,3 @@ export const config = {
     { name: "Framer Motion", icon: "framer" },
   ],
 };
-

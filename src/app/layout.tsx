@@ -16,7 +16,7 @@ const readexPro = Readex_Pro({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://yourportfolio.com'), // Replace with your actual domain
+  metadataBase: new URL('https://nitishh.in'), // Replace with your actual domain
   title: {
     template: "%s | Nitish Kumar Pandit - Full Stack Developer",
     default: "Nitish Kumar Pandit - Full Stack Developer",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "AWS",
     "Docker",
   ],
-  authors: [{ name: "Nitish Kumar Pandit", url: "https://yourportfolio.com" }],
+  authors: [{ name: "Nitish Kumar Pandit", url: "https://nitishh.in" }],
   creator: "Nitish Kumar Pandit",
   publisher: "Nitish Kumar Pandit",
   formatDetection: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
+    url: "https://nitishh.in",
     siteName: "Nitish Kumar Pandit - Portfolio",
     title: "Nitish Kumar Pandit - Full Stack Developer",
     description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies. View my projects and get in touch.",
