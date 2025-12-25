@@ -1,119 +1,158 @@
-# 🌟 Nitish Kumar Pandit - Developer Portfolio
+# Nitish Kumar Pandit - Full Stack Developer Portfolio
 
-### A Modern 3D Interactive Portfolio Experience
+A modern, SEO-optimized portfolio website built with Next.js 16, showcasing projects, skills, and professional experience.
 
-Welcome to my personal portfolio website - a cutting-edge web experience that showcases my skills as a full-stack developer and final year student. Built with modern technologies and smooth animations to create an engaging user experience.
+## 🚀 Features
 
-> 🚀 **Live Portfolio**: [nitishh.in](https://nitishh.in)
+- **Next.js 16** with React 19 and App Router
+- **SEO Optimized** for Google and other search engines
+- **Responsive Design** - Perfect on all devices
+- **Modern UI** built with Tailwind CSS v4 and shadcn/ui components
+- **Dark Mode** support
+- **Performance Optimized** with Next.js Image optimization
+- **Structured Data** (JSON-LD) for rich search results
+- **Sitemap & Robots.txt** for better crawling
 
----
+## 🛠️ Tech Stack
 
-## 👨‍💻 About Me
+- **Framework**: Next.js 16
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **UI Components**: shadcn/ui (Radix UI)
+- **Icons**: Lucide React, Tabler Icons, React Icons
+- **Animations**: Motion One
+- **State Management**: Zustand
+- **Analytics**: Vercel Analytics & Speed Insights
 
-I'm **Nitish Kumar Pandit**, a passionate final year student and full-stack developer who loves building innovative web applications. I specialize in creating seamless digital experiences that combine functionality with beautiful design.
-
-### 🎯 What I Do
-- **Full-Stack Development** - Building scalable web applications from frontend to backend
-- **DevOps & Cloud Solutions** - Automating deployments and managing cloud infrastructure
-- **Web & Mobile Apps** - Creating responsive, cross-platform applications
-- **Game Development** - Crafting interactive 2D games with educational elements
-
----
-
-## 🛠️ Technologies Used
-
-This portfolio is built with cutting-edge technologies:
-
-- **Frontend**: React.js, Vite, TailwindCSS
-- **3D Graphics**: Three.js, React Three Fiber, Drei
-- **Animations**: GSAP, Framer Motion
-- **Styling**: TailwindCSS with custom animations
-- **Icons**: Iconify React
-- **Performance**: Optimized for 60fps on all devices
-
----
-
-## ✨ Portfolio Features
-
-- 🌍 **3D Hero Section** - Interactive planet with golden ring animation
-- 🎨 **Smooth Animations** - GSAP-powered scroll triggers and micro-interactions
-- 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
-- 🚀 **Live Project Links** - Click on project cards to view live demos
-- 💼 **Experience Timeline** - Interactive work experience showcase
-- 📧 **Contact Integration** - Easy ways to get in touch
-- ⚡ **Performance Optimized** - Fast loading with smooth 60fps animations
-
----
-
-## 🎯 Featured Projects
-
-### 💰 [CashTrack - AI Powered Expense Tracker](https://cashtrack.nitishh.in)
-Smart expense tracking with AI-powered insights
-- **Tech**: Next.js, Clerk, Neon Database, Recharts, Framer Motion
-
-### 💻 [CompileX - Online IDE](https://compilex.nitishh.in)
-Full-featured online code editor and compiler
-- **Tech**: React.js, Node.js, Express.js, MongoDB, Monaco Editor
-
-### 🔄 [ModiFile - File Converter](https://modifile.nitishh.in)
-Simple and powerful file conversion tool
-- **Tech**: Next.js, TypeScript, FFmpeg.wasm, TailwindCSS
-
-### 🔗 [ShrinkLink - URL Shortener](https://sl.nitishh.in)
-Fast and reliable URL shortening service
-- **Tech**: React.js, Node.js, Express.js, MongoDB, TailwindCSS
-
-### 📝 [WaveLink - Blogging Platform](https://wavelink.nitishh.in)
-Modern blogging platform with rich text editing
-- **Tech**: React.js, Appwrite, TinyMCE, Redux
-
----
-
-## 🚀 Getting Started
-
-Want to run this portfolio locally? Here's how:
+## 📦 Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/Nitish-Kumar-Pandit/portfolio.git
-
-# Navigate to project directory
+git clone https://github.com/nitishkumarpandittt/portfolio.git
 cd portfolio
 
 # Install dependencies
 npm install
 
-# Start development server
+# Run development server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+Visit `http://localhost:3000` to see the portfolio.
 
----
+## ⚙️ Configuration
 
-## 📁 Project Structure
+### Update Personal Information
 
+Edit `src/config.ts` to update your personal information, projects, and skills:
+
+```typescript
+export const config = {
+  developer: {
+    name: "Your Name",
+    title: "Your Title",
+    bio: "Your bio",
+    avatar: "Your avatar URL",
+  },
+  social: {
+    github: "your-github-username",
+    email: "your-email@example.com",
+    location: "Your Location",
+  },
+  // Add your projects and skills
+}
 ```
-src/
-├── components/          # Reusable UI components
-├── sections/           # Main page sections
-├── constants/          # Data and configuration
-├── assets/            # Images and static files
-└── styles/            # Global styles and animations
+
+### SEO Configuration
+
+1. Update `src/app/layout.tsx`:
+   - Replace `https://yourportfolio.com` with your actual domain
+   - Add your Google Search Console verification code
+   - Update Twitter handle if you have one
+
+2. Update `src/app/sitemap.ts`:
+   - Replace `https://yourportfolio.com` with your actual domain
+
+3. Update `public/robots.txt`:
+   - Replace `https://yourportfolio.com` with your actual domain
+
+4. Update `src/components/structured-data.tsx`:
+   - Add your social media profiles
+   - Add your education details
+   - Update any other personal information
+
+### Add Resume
+
+Place your resume PDF file in the `public` folder as `resume.pdf`.
+
+## 🚀 Deployment
+
+### Deploy to Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Vercel will automatically detect Next.js and deploy
+4. Update environment variables if needed
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
 ```
 
+## 📈 SEO Optimization
+
+This portfolio is optimized for search engines with:
+
+- ✅ Comprehensive meta tags
+- ✅ Open Graph tags for social sharing
+- ✅ Twitter Card tags
+- ✅ Structured data (JSON-LD) for rich results
+- ✅ Sitemap.xml for better crawling
+- ✅ Robots.txt for search engine guidance
+- ✅ Semantic HTML structure
+- ✅ Mobile-responsive design
+- ✅ Fast loading times
+- ✅ Accessible design
+
+### Post-Deployment SEO Steps
+
+1. **Google Search Console**:
+   - Add your site to [Google Search Console](https://search.google.com/search-console)
+   - Submit your sitemap (`yoursite.com/sitemap.xml`)
+   - Verify ownership and add verification code to `layout.tsx`
+
+2. **Google Analytics** (Optional):
+   - Set up [Google Analytics 4](https://analytics.google.com)
+   - Add tracking ID to your site
+
+3. **Social Media**:
+   - Create an OG image (1200x630px) and save as `public/og-image.jpg`
+   - Share your portfolio on LinkedIn, Twitter, etc.
+
+4. **Build Backlinks**:
+   - Add portfolio to GitHub profile
+   - Share on dev.to, Medium, and other platforms
+   - List on developer directories
+
+## 📱 Screenshots
+
+Add screenshots of your portfolio here.
+
+## 🤝 Contributing
+
+Feel free to fork this repository and customize it for your own portfolio!
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📧 Contact
+
+- Email: workwithnitishhh@gmail.com
+- GitHub: [@nitishkumarpandittt](https://github.com/nitishkumarpandittt)
+
 ---
 
-## 🤝 Let's Connect
-
-I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
-
-- 🌐 **Portfolio**: [nitishh.in](https://nitishh.in)
-- 💼 **LinkedIn**: [linkedin.com/in/nitishkumarpandittt](https://www.linkedin.com/in/nitishkumarpandittt/)
-- 🐱 **GitHub**: [github.com/nitishkumarpandittt](https://github.com/nitishkumarpandittt)
-- 📸 **Instagram**: [instagram.com/nitishpandittt](https://www.instagram.com/nitishpandittt/)
-
-
----
-
-**Built with ❤️ by Nitish Kumar Pandit**
+Built with ❤️ by Nitish Kumar Pandit

@@ -1,0 +1,117 @@
+import type { Metadata } from "next";
+import "./globals.css";
+
+import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/theme-provider";
+// Vercel Analytics
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+
+import { Readex_Pro } from "next/font/google";
+import { StructuredData } from "@/components/structured-data";
+
+const readexPro = Readex_Pro({
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://yourportfolio.com'), // Replace with your actual domain
+  title: {
+    template: "%s | Nitish Kumar Pandit - Full Stack Developer",
+    default: "Nitish Kumar Pandit - Full Stack Developer",
+  },
+  description: "Full-stack developer specializing in React, Next.js, Node.js, TypeScript, and modern web technologies. Creating scalable, accessible digital experiences. Based in Panchkula, Haryana.",
+  keywords: [
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "TypeScript Developer",
+    "JavaScript Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Web Developer",
+    "Software Engineer",
+    "Nitish Kumar Pandit",
+    "Portfolio",
+    "Panchkula Developer",
+    "Haryana Developer",
+    "India Developer",
+    "MERN Stack",
+    "TailwindCSS",
+    "MongoDB",
+    "Express.js",
+    "AWS",
+    "Docker",
+  ],
+  authors: [{ name: "Nitish Kumar Pandit", url: "https://yourportfolio.com" }],
+  creator: "Nitish Kumar Pandit",
+  publisher: "Nitish Kumar Pandit",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://yourportfolio.com",
+    siteName: "Nitish Kumar Pandit - Portfolio",
+    title: "Nitish Kumar Pandit - Full Stack Developer",
+    description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies. View my projects and get in touch.",
+    images: [
+      {
+        url: "/og-image.jpg", // Create this image (1200x630px)
+        width: 1200,
+        height: 630,
+        alt: "Nitish Kumar Pandit - Full Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nitish Kumar Pandit - Full Stack Developer",
+    description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies.",
+    images: ["/og-image.jpg"],
+    creator: "@nitishpandit", // Replace with your Twitter handle if you have one
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code", // Add after Google Search Console verification
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
+      <body className={`${readexPro.className} antialiased`}>
+        <NuqsAdapter>
+          <ThemeProvider attribute="class">
+            <Toaster />
+            {children}
+          </ThemeProvider>
+        </NuqsAdapter>
+        <SpeedInsights />
+        <Analytics />
+      </body>
+    </html>
+  );
+}
