@@ -12,7 +12,6 @@ interface MenuItem {
   label: string;
   href: string;
   external?: boolean;
-  download?: string;
 }
 
 const menuItems: MenuItem[] = [
@@ -21,7 +20,7 @@ const menuItems: MenuItem[] = [
   { label: "Projects", href: "/projects" },
   { label: "Skills", href: "/skills" },
   { label: "Contact", href: "/contact" },
-  { label: "Resume", href: "/resume.pdf", download: "Nitish_Kumar_Pandit_Resume.pdf" },
+  { label: "Resume", href: "/resume.pdf", external: true },
 ];
 
 interface Props {
@@ -32,16 +31,13 @@ interface Props {
 export default function MobileMenu({ isOpen, onClose }: Props) {
   const router = useRouter();
 
-  const handleNavigation = (href: string, download?: string) => {
-    if (download) {
-      // Create a temporary anchor to trigger download
-      const link = document.createElement('a');
-      link.href = href;
-      link.download = download;
-      link.click();
+  const handleNavigation = (item: MenuItem) => {
+    if (item.external) {
+      // Open external links in new tab
+      window.open(item.href, '_blank');
       onClose();
     } else {
-      router.push(href);
+      router.push(item.href);
       onClose();
     }
   };
@@ -104,7 +100,7 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
               {menuItems.map((item) => (
                 <motion.button
                   key={item.label}
-                  onClick={() => handleNavigation(item.href, item.download)}
+                  onClick={() => handleNavigation(item)}
                   className="w-full text-left p-4 rounded-xl mb-3 flex items-center justify-between bg-muted-hover text-text-muted text-sm"
                   whileTap={{ scale: 0.98 }}
                 >
