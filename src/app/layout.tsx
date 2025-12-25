@@ -70,13 +70,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Nitish Kumar Pandit - Full Stack Developer",
-    description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    images: ["/og-image.jpg"],
-    creator: "@nitishpandit", // Replace with your Twitter handle if you have one
-  },
   robots: {
     index: true,
     follow: true,
