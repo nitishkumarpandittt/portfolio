@@ -27,7 +27,7 @@ export const config = {
         "Framer Motion",
         "Recharts"
       ],
-      github: "https://github.com/nitishkumarpandittt/CashTrackhttps://github.com/nitishkumarpandittt/WaveLink",
+      github: "https://github.com/nitishkumarpandittt/CashTrack",
       demo: "https://cashtrack.nitishh.in",
     },
     {
