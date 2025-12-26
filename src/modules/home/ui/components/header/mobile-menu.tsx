@@ -70,10 +70,10 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
                 onClick={onClose}
                 className="fixed top-0 right-3 z-50 bg-background rounded-bl-[18px] cursor-pointer select-none"
               >
-                <div className="relative pb-3 px-4">
+                <div className="relative py-3 px-4">
                   <h1 className="text-sm font-light">Close</h1>
                   <Graphic className="absolute -bottom-4 right-0 rotate-90" />
-                  <Graphic className="absolute -left-4 top-0 rotate-90" />
+                  <Graphic className="absolute -left-4 top-2.5 rotate-90" />
                 </div>
               </button>
 

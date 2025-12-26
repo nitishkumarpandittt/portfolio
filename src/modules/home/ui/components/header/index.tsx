@@ -10,7 +10,7 @@ const Header = () => {
   const isHome = pathname === "/";
 
   return (
-    <header className="fixed top-0 left-3 z-50 bg-background rounded-br-[18px]">
+    <header className="fixed top-0 left-2.5 z-50 bg-background rounded-br-[18px]">
       <div className="relative">
         <Navbar />
         {/* MOBILE TOP BAR  */}
@@ -19,7 +19,7 @@ const Header = () => {
         <div className={`absolute left-0 size-[18px] ${isHome ? "-bottom-3" : "-bottom-[18px]"}`}>
           <Graphic />
         </div>
-        <div className={`absolute -right-[18px] size-[18px] ${isHome ? "top-3" : "top-0"}`}>
+        <div className={`absolute -right-[17px] size-[18px] top-2.5 ${isHome ? "lg:top-2.5" : "lg:top-0"}`}>
           <Graphic />
         </div>
       </div>
