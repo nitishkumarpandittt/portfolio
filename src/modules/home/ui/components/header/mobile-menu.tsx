@@ -68,7 +68,7 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
               {/* CLOSE BUTTON  */}
               <button
                 onClick={onClose}
-                className="fixed top-3 right-3 z-50 bg-background rounded-bl-[18px] cursor-pointer select-none"
+                className="fixed top-0 right-3 z-50 bg-background rounded-bl-[18px] cursor-pointer select-none"
               >
                 <div className="relative pb-3 px-4">
                   <h1 className="text-sm font-light">Close</h1>

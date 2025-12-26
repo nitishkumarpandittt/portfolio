@@ -59,7 +59,7 @@ const ProfileCard = () => {
 
         <ContactCard
           title="Contact me"
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=dev.nitishh@gmail.com&su=Contact%20from%20Portfolio"
+          href="mailto:dev.nitishh@gmail.com?subject=Contact%20from%20Portfolio"
           className="bg-primary text-white dark:text-black hover:bg-primary"
         />
       </div>

@@ -5,7 +5,7 @@ import { ThemeSwitch } from "@/components/theme-toggle";
 const Navbar = () => {
   return (
     <nav>
-      <div className="flex items-center gap-5 pb-3 px-4 relative">
+      <div className="flex items-center gap-5 py-3 px-4 relative">
         <Logo />
         <div className="hidden lg:flex gap-4">
           <FlipLink href="/">Home</FlipLink>
