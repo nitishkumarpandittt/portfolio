@@ -23,7 +23,7 @@ const AboutPage = () => {
             </AvatarFallback>
           </Avatar>
           <div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">
+            <h1 className="text-3xl md:text-5xl font-bold mb-2">
               {config.developer.name}
             </h1>
             <p className="text-xl text-muted-foreground mb-4">
