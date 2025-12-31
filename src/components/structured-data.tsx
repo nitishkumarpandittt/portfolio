@@ -5,13 +5,11 @@ export function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: config.developer.name,
-    url: "https://yourportfolio.com", // Replace with your actual domain
-    image: config.developer.avatar,
+    url: "https://nitishh.in",
+    image: "https://nitishh.in/og-image.jpg",
     sameAs: [
       `https://github.com/${config.social.github}`,
-      // Add more social profiles here
-      // "https://linkedin.com/in/your-profile",
-      // "https://twitter.com/your-handle",
+      "https://www.linkedin.com/in/nitishkumarpandittt/",
     ],
     jobTitle: config.developer.title,
     description: config.developer.bio,
@@ -23,7 +21,7 @@ export function StructuredData() {
     },
     alumniOf: {
       "@type": "Organization",
-      name: "Your University Name", // Add your education
+      name: "Binghamton University",
     },
     knowsAbout: [
       "React",

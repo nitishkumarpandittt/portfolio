@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     default: "Nitish - Software Engineer",
   },
   description: "Full-stack developer specializing in React, Next.js, Node.js, TypeScript, and modern web technologies. Creating scalable, accessible digital experiences. Based in Panchkula, Haryana.",
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   keywords: [
     "Nitish Software Engineer",
     "Full Stack Developer",
