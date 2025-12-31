@@ -136,10 +136,6 @@ This portfolio is optimized for search engines with:
    - Share on dev.to, Medium, and other platforms
    - List on developer directories
 
-## 📱 Screenshots
-
-Add screenshots of your portfolio here.
-
 ## 🤝 Contributing
 
 Feel free to fork this repository and customize it for your own portfolio!
@@ -150,8 +146,9 @@ This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-- Email: workwithnitishhh@gmail.com
-- GitHub: [@nitishkumarpandittt](https://github.com/nitishkumarpandittt)
+- Email: dev.nitishh@gmail.com
+- LinkedIn: [nitishkumarpandittt](https://www.linkedin.com/in/nitishkumarpandittt/)
+- GitHub: [nitishkumarpandittt](https://github.com/nitishkumarpandittt)
 
 ---
 
