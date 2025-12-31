@@ -147,8 +147,8 @@ This project is licensed under the MIT License.
 ## 📧 Contact
 
 - Email: dev.nitishh@gmail.com
-- LinkedIn: [@nitishkumarpandittt}(https://www.linkedin.com/in/nitishkumarpandittt/)
-- GitHub: [@nitishkumarpandittt](https://github.com/nitishkumarpandittt)
+- LinkedIn: [nitishkumarpandittt](https://www.linkedin.com/in/nitishkumarpandittt/)
+- GitHub: [nitishkumarpandittt](https://github.com/nitishkumarpandittt)
 
 ---
 
