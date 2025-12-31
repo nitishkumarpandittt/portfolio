@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 import { Readex_Pro } from "next/font/google";
 import { StructuredData } from "@/components/structured-data";
@@ -97,7 +97,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className={`${readexPro.className} antialiased`}>
-        <GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GA_ID!} />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_ID!} />
         <NuqsAdapter>
           <ThemeProvider attribute="class">
             <Toaster />
