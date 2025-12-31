@@ -4,9 +4,9 @@ import "./globals.css";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
-// Vercel Analytics
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 import { Readex_Pro } from "next/font/google";
 import { StructuredData } from "@/components/structured-data";
@@ -16,7 +16,7 @@ const readexPro = Readex_Pro({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nitishh.in'), // Replace with your actual domain
+  metadataBase: new URL('https://nitishh.in'),
   title: {
     template: "%s | Nitish - Software Engineer",
     default: "Nitish - Software Engineer",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description: "Full-stack developer specializing in React, Next.js, Node.js, and modern web technologies. View my projects and get in touch.",
     images: [
       {
-        url: "/og-image.jpg", // Create this image (1200x630px)
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Nitish Kumar Pandit - Full Stack Developer",
@@ -97,6 +97,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className={`${readexPro.className} antialiased`}>
+        <GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GA_ID!} />
         <NuqsAdapter>
           <ThemeProvider attribute="class">
             <Toaster />
